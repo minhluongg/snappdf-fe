@@ -1,0 +1,158 @@
+.app-how {
+  padding-top: 72px;
+  background-color: #fff;
+}
+
+.app-how .title-h2 {
+  text-align: center;
+}
+
+.main-cover {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.main-cover .title-wrapper {
+  margin-top: 0;
+}
+
+.pdf-item canvas {
+  max-width: 100%;
+}
+
+body.d-scroll {
+  height: auto;
+  overflow: hidden;
+}
+
+.step-text {
+  font-size: 14px;
+  line-height: 20px;
+  color: #32343E;
+  /* display: inline-block; */
+}
+
+.step {
+  display: -ms-grid;
+  display: grid;
+  gap: 8px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-grid-columns: 24px auto;
+      grid-template-columns: 24px auto;
+  padding-bottom: 24px;
+}
+
+.step:last-child {
+  padding-bottom: 0;
+}
+
+.app-how .img {
+  margin-top: 32px;
+}
+
+.app-how img {
+  width: 100%;
+}
+
+.app-how .content {
+  padding-bottom: 56px;
+  margin-top: 1rem;
+}
+
+.list-product {
+  background-color: #fff;
+  padding-bottom: 56px;
+}
+
+.list-product .title-h2 {
+  text-align: center;
+  padding-top: 56px;
+  display: block;
+}
+
+.product-category {
+  margin-top: 32px;
+}
+
+.products {
+  margin-bottom: 0;
+}
+
+.products li a {
+  border-radius: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 6px;
+  gap: 8px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #1D1C21;
+}
+
+.products li a:hover {
+  background: #EDEDED;
+}
+
+.products-title {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #6A696C;
+}
+
+@media (min-width: 768px) {
+  .apphow-box {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 312px auto;
+        grid-template-columns: 312px auto;
+    gap: 1rem;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-top: 24px;
+    padding-bottom: 72px;
+  }
+  .apphow-box .img {
+    width: 312px;
+    margin-top: 0;
+  }
+  .app-how .content {
+    padding-bottom: 0;
+    margin-top: 0;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .list-product {
+    padding-bottom: 80px;
+  }
+  .list-product .title-h2 {
+    margin-top: 80px;
+    margin-bottom: 12px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .product-category {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+    width: 20%;
+  }
+}
+/*# sourceMappingURL=app.css.map */

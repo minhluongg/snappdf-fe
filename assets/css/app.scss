@@ -1,0 +1,127 @@
+.app-how {
+    padding-top: 72px;
+    background-color: #fff;
+    .title-h2 {
+        text-align: center;
+    }
+}
+.main-cover {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    .title-wrapper {
+        margin-top: 0;
+    }
+}
+.pdf-item canvas {
+    max-width: 100%;
+}
+body.d-scroll {
+    height: auto;
+    overflow: hidden;
+}
+
+.step-text {
+    font-size: 14px;
+    line-height: 20px;
+    color: #32343E;
+    /* display: inline-block; */
+}
+
+.step {
+    display: grid;
+    gap: 8px;
+    flex-direction: row;
+    grid-template-columns: 24px auto;
+    padding-bottom: 24px;
+}
+.step:last-child {
+    padding-bottom: 0;
+}
+.app-how {
+    .img {
+        margin-top: 32px;
+    }
+    img {
+        width: 100%;
+    }
+    .content {
+        padding-bottom: 56px;
+        margin-top: 1rem;
+    }
+}
+
+.list-product {
+    background-color: #fff;
+    padding-bottom: 56px;
+    .title-h2 {
+        text-align: center;
+        padding-top: 56px;
+        display: block;
+    }
+    
+}
+.product-category {
+    margin-top: 32px;
+    
+}
+.products {
+    margin-bottom: 0;
+    li a {
+        border-radius: 4px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 6px;
+        gap: 8px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        color: #1D1C21;
+        &:hover {
+            background: #EDEDED;
+        }
+    }
+}
+.products-title {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #6A696C;
+}
+@media (min-width: 768px) {
+    
+    .apphow-box {
+        display: grid;
+        grid-template-columns: 312px auto;
+        gap: 1rem;
+        align-items: center;
+        margin-top: 24px;
+        padding-bottom: 72px;
+        .img {
+            width: 312px;
+            margin-top: 0;
+        }
+    }
+    .app-how {
+        .content {
+            padding-bottom: 0;
+            margin-top: 0;
+            height: fit-content;
+        }
+    }
+    .list-product {
+        padding-bottom: 80px;
+        .title-h2 {
+            margin-top: 80px;
+            margin-bottom: 12px;
+        }
+    } 
+}
+@media (min-width: 1200px) {
+    .product-category {
+        flex: 0 0 auto;
+        width: 20%;
+    }
+}

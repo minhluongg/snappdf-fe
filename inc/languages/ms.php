@@ -91,12 +91,3 @@ $home['help_center'] = "Help Center";
 $home['tos'] = "Terms of Service";
 $home['contact'] = "Contact";
 $home['slogan'] = "We make PDF easy";
-
-// Update v.1.1 
-
-$lang['allproduct_title'] = 'Meet our full product family';
-$lang['view_and_edit'] = 'View & Edit';
-$lang['split_and_merge'] = 'Split & merge';
-$lang['convertfromPDF'] = 'Convert from PDF';
-$lang['convert2PDF'] = 'Convert to PDF';
-$lang['security_and_sign'] = 'Security & Sign';

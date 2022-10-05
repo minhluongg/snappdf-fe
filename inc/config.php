@@ -1,6 +1,6 @@
 <?php
 // Config
-$home_page = 'https://'.strtolower($_SERVER['SERVER_NAME']);
+$isHomeUrl = 'https://'.strtolower($_SERVER['SERVER_NAME']);
 
 
 include $_SERVER['DOCUMENT_ROOT'] . '/inc/functions.php';
