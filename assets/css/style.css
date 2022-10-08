@@ -68,6 +68,12 @@ h3 {
   font-size: 1.5rem;
 }
 
+header.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
 .navbar {
   background-color: #fff;
   padding: 0;
@@ -186,6 +192,10 @@ h3 {
   font-size: 12px;
   line-height: 18px;
   color: #464549;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .steps-box {
@@ -622,6 +632,7 @@ footer {
 .tools_container.row .tool-box {
   background-color: #fff;
   padding: 16px;
+  height: 100%;
 }
 
 .converter {

@@ -1,8 +1,8 @@
 <?php
 
-$merge['title'] = "Merge PDF";
-$merge['desc'] = "Merge PDF";
-$merge['h1'] = "Merge PDF";
+$merge['title'] = "JPG to PDF";
+$merge['desc'] = "JPG to PDF";
+$merge['h1'] = "JPG to PDF";
 $merge['h2'] = "Magically convert PDFs to editable Word files";
 
 $merge['how_title'] = "How to Convert Files to and from PDF Free";
@@ -24,3 +24,14 @@ $merge['why-choose_desc5'] = "MERGE - Fast processing speed is our top priority.
 $merge['whyChoose_6'] = "MERGE - Use on any device";
 $merge['why-choose_desc6'] = "MERGE - SnapPDF online - you can use it on any device such as Android phone, IOS, or Windows PC, Macbook... without downloading any additional software.";
 
+
+$merge['selectPageOrientation'] = "Select the page orientation";
+$merge['potrait'] = "Potrait";
+$merge['landscape'] = "Landscape";
+$merge['pagesize'] = "Page size";
+$merge['margin'] = "Margin";
+$merge['no-margin'] = "No margin";
+$merge['small'] = "Small";
+$merge['big'] = "Big";
+$merge['mergeonepdf'] = "Merge all images in one PDF file";
+$merge['output-setting'] = "Output Setting";

@@ -10,6 +10,7 @@ include 'inc/config.php';
 
 $isTitle = $lang['title'];
 $isDesc = $lang['desc'];
+$isCanonical = isset($_GET['lang']) ? $isHomeUrl . '/' . $_GET['lang'] : $isHomeUrl;
 include 'inc/header.php';
 ?>
 

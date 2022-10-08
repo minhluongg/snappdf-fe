@@ -6,10 +6,6 @@ $isHomeUrl = 'https://'.strtolower($_SERVER['SERVER_NAME']);
 include $_SERVER['DOCUMENT_ROOT'] . '/inc/functions.php';
 
 $listLanguage = array(
-    'ar' =>  array(
-        'name' => 'عَرَبِيّ',
-        'flag' => ''
-    ),
     'en' =>  array(
         'name' => 'English',
         'flag' => ''
@@ -50,8 +46,16 @@ $listLanguage = array(
         'name' => 'Русский', 
         'flag' => ''
     ),
+    'th' => array(
+        'name' => 'Thai', 
+        'flag' => ''
+    ),
     'ja' => array(
         'name' => '日本語', 
+        'flag' => ''
+    ),
+    'ko' => array(
+        'name' => '한국어', 
         'flag' => ''
     )
 );

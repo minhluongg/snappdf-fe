@@ -3,9 +3,9 @@
  * Config
  */
 $multiLanguage = true;
-$slug = '/jpg-to-pdf';
-$privateLanguage = 'jpg2pdf/';
-
+$slug = '/pdf-to-jpg';
+$privateLanguage = 'pdf2jpg/';
+// include 
 include '../inc/config.php';
 
 $isTitle = $merge['title'];
@@ -14,10 +14,9 @@ $isCanonical = $isHomeUrl . $slug;
 
 include '../inc/header.php';
 ?>
-
-<link href="/assets/css/app.css?v=1.3" rel="stylesheet">
+<link href="/assets/css/app.css" rel="stylesheet">
 <div class="main-cover">
-    <div class="container mt-3">
+    <div class="container">
         <div class="upload" id="upload">
             <div class="title-wrapper">
                 <div class="title-page">
@@ -29,7 +28,7 @@ include '../inc/header.php';
             <div class="upload-box" id="upload-box">
                 <div id="drop-area" class="drop-area">
                     <label for="file" class="label-upload"><svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19.5 11H13.5V5C13.5 4.73478 13.3946 4.48043 13.2071 4.29289C13.0196 4.10536 12.7652 4 12.5 4C12.2348 4 11.9804 4.10536 11.7929 4.29289C11.6054 4.48043 11.5 4.73478 11.5 5V11H5.5C5.23478 11 4.98043 11.1054 4.79289 11.2929C4.60536 11.4804 4.5 11.7348 4.5 12C4.5 12.2652 4.60536 12.5196 4.79289 12.7071C4.98043 12.8946 5.23478 13 5.5 13H11.5V19C11.5 19.2652 11.6054 19.5196 11.7929 19.7071C11.9804 19.8946 12.2348 20 12.5 20C12.7652 20 13.0196 19.8946 13.2071 19.7071C13.3946 19.5196 13.5 19.2652 13.5 19V13H19.5C19.7652 13 20.0196 12.8946 20.2071 12.7071C20.3946 12.5196 20.5 12.2652 20.5 12C20.5 11.7348 20.3946 11.4804 20.2071 11.2929C20.0196 11.1054 19.7652 11 19.5 11Z" fill="white"/></svg>Upload</label>
-                    <input type="file" accept="image/*" id="file">
+                    <input type="file" accept="application/pdf,.pdf" id="file">
                 </div>
             </div>
 
@@ -130,8 +129,9 @@ include '../inc/products.php';
                         <div class="row handle-upload" id="handle-upload">
                             <div class="col-12">
                                 <div class="ready-convert">
-                                    <div class="pdf-items" id="pdfItems"></div>
-                                    <div class="upload-more"><label for="file" class="btn-upload-more"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 4.5C12.4142 4.5 12.75 4.83579 12.75 5.25V11.25H18.75C19.1642 11.25 19.5 11.5858 19.5 12C19.5 12.4142 19.1642 12.75 18.75 12.75H12.75V18.75C12.75 19.1642 12.4142 19.5 12 19.5C11.5858 19.5 11.25 19.1642 11.25 18.75V12.75H5.25C4.83579 12.75 4.5 12.4142 4.5 12C4.5 11.5858 4.83579 11.25 5.25 11.25H11.25V5.25C11.25 4.83579 11.5858 4.5 12 4.5Z" fill="#363539"/></svg></label></div>
+                                    <div class="preview-download">
+                                        <div class="preview-file" id="pdfItems"></div>
+                                    </div>
                                 </div>
 
                             </div>
@@ -168,71 +168,80 @@ include '../inc/products.php';
                 </div>
             </div>
             <div class="settings">
-                <div class="setting-header">
-                    <div class="settings-title"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.9999 8.25C11.2582 8.25 10.5332 8.46993 9.9165 8.88199C9.29981 9.29404 8.81916 9.87971 8.53534 10.5649C8.25151 11.2502 8.17724 12.0042 8.32194 12.7316C8.46663 13.459 8.82379 14.1272 9.34823 14.6517C9.87268 15.1761 10.5409 15.5333 11.2683 15.6779C11.9957 15.8226 12.7497 15.7484 13.4349 15.4645C14.1202 15.1807 14.7058 14.7001 15.1179 14.0834C15.53 13.4667 15.7499 12.7417 15.7499 12C15.7469 11.0064 15.3509 10.0542 14.6483 9.35163C13.9456 8.64901 12.9935 8.25297 11.9999 8.25ZM20.0961 12C20.0942 12.3504 20.0685 12.7003 20.0193 13.0472L22.3016 14.8341C22.401 14.9161 22.468 15.0309 22.4906 15.1578C22.5132 15.2847 22.4899 15.4155 22.4249 15.5269L20.2658 19.2544C20.2002 19.3647 20.0977 19.4484 19.9765 19.4907C19.8553 19.5329 19.723 19.5311 19.603 19.4855L16.9194 18.4073C16.3606 18.8377 15.7491 19.1948 15.0997 19.47L14.6985 22.3191C14.676 22.4467 14.6099 22.5625 14.5115 22.6468C14.4131 22.7311 14.2885 22.7786 14.1589 22.7812H9.84082C9.71363 22.7788 9.59103 22.7333 9.49304 22.6521C9.39504 22.571 9.32745 22.459 9.30129 22.3345L8.90004 19.4855C8.24889 19.2134 7.63693 18.8557 7.08035 18.4219L4.39676 19.5C4.2768 19.5457 4.14458 19.5476 4.02336 19.5054C3.90213 19.4632 3.79965 19.3796 3.73395 19.2694L1.57488 15.5423C1.5099 15.431 1.48661 15.3002 1.5092 15.1733C1.53178 15.0464 1.59876 14.9316 1.69816 14.8495L3.98051 13.0627C3.93183 12.7105 3.90615 12.3555 3.90363 12C3.90558 11.6496 3.93127 11.2997 3.98051 10.9528L1.69816 9.16594C1.59876 9.08386 1.53178 8.96911 1.5092 8.84219C1.48661 8.71527 1.5099 8.58446 1.57488 8.47312L3.73395 4.74563C3.79958 4.63528 3.90202 4.55161 4.02326 4.50934C4.14449 4.46707 4.27675 4.46891 4.39676 4.51453L7.08035 5.59266C7.63916 5.16235 8.25068 4.80524 8.90004 4.53L9.30129 1.68094C9.32375 1.55332 9.38983 1.43746 9.48823 1.35316C9.58664 1.26886 9.71127 1.22135 9.84082 1.21875H14.1589C14.2861 1.22123 14.4087 1.26675 14.5067 1.34788C14.6047 1.42901 14.6723 1.54097 14.6985 1.66547L15.0997 4.51453C15.7517 4.78639 16.3645 5.14408 16.9218 5.57812L19.603 4.5C19.723 4.45434 19.8552 4.45243 19.9764 4.49461C20.0976 4.53679 20.2001 4.62036 20.2658 4.73062L22.4249 8.45813C22.4899 8.56946 22.5132 8.70027 22.4906 8.82719C22.468 8.95411 22.401 9.06886 22.3016 9.15094L20.0193 10.9378C20.0679 11.2898 20.0936 11.6446 20.0961 12Z" fill="#363539"/></svg><?=$merge['output-setting']?></div>
+                <div class="setting-header border-none">
+                    <div class="settings-title"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.9999 8.25C11.2582 8.25 10.5332 8.46993 9.9165 8.88199C9.29981 9.29404 8.81916 9.87971 8.53534 10.5649C8.25151 11.2502 8.17724 12.0042 8.32194 12.7316C8.46663 13.459 8.82379 14.1272 9.34823 14.6517C9.87268 15.1761 10.5409 15.5333 11.2683 15.6779C11.9957 15.8226 12.7497 15.7484 13.4349 15.4645C14.1202 15.1807 14.7058 14.7001 15.1179 14.0834C15.53 13.4667 15.7499 12.7417 15.7499 12C15.7469 11.0064 15.3509 10.0542 14.6483 9.35163C13.9456 8.64901 12.9935 8.25297 11.9999 8.25ZM20.0961 12C20.0942 12.3504 20.0685 12.7003 20.0193 13.0472L22.3016 14.8341C22.401 14.9161 22.468 15.0309 22.4906 15.1578C22.5132 15.2847 22.4899 15.4155 22.4249 15.5269L20.2658 19.2544C20.2002 19.3647 20.0977 19.4484 19.9765 19.4907C19.8553 19.5329 19.723 19.5311 19.603 19.4855L16.9194 18.4073C16.3606 18.8377 15.7491 19.1948 15.0997 19.47L14.6985 22.3191C14.676 22.4467 14.6099 22.5625 14.5115 22.6468C14.4131 22.7311 14.2885 22.7786 14.1589 22.7812H9.84082C9.71363 22.7788 9.59103 22.7333 9.49304 22.6521C9.39504 22.571 9.32745 22.459 9.30129 22.3345L8.90004 19.4855C8.24889 19.2134 7.63693 18.8557 7.08035 18.4219L4.39676 19.5C4.2768 19.5457 4.14458 19.5476 4.02336 19.5054C3.90213 19.4632 3.79965 19.3796 3.73395 19.2694L1.57488 15.5423C1.5099 15.431 1.48661 15.3002 1.5092 15.1733C1.53178 15.0464 1.59876 14.9316 1.69816 14.8495L3.98051 13.0627C3.93183 12.7105 3.90615 12.3555 3.90363 12C3.90558 11.6496 3.93127 11.2997 3.98051 10.9528L1.69816 9.16594C1.59876 9.08386 1.53178 8.96911 1.5092 8.84219C1.48661 8.71527 1.5099 8.58446 1.57488 8.47312L3.73395 4.74563C3.79958 4.63528 3.90202 4.55161 4.02326 4.50934C4.14449 4.46707 4.27675 4.46891 4.39676 4.51453L7.08035 5.59266C7.63916 5.16235 8.25068 4.80524 8.90004 4.53L9.30129 1.68094C9.32375 1.55332 9.38983 1.43746 9.48823 1.35316C9.58664 1.26886 9.71127 1.22135 9.84082 1.21875H14.1589C14.2861 1.22123 14.4087 1.26675 14.5067 1.34788C14.6047 1.42901 14.6723 1.54097 14.6985 1.66547L15.0997 4.51453C15.7517 4.78639 16.3645 5.14408 16.9218 5.57812L19.603 4.5C19.723 4.45434 19.8552 4.45243 19.9764 4.49461C20.0976 4.53679 20.2001 4.62036 20.2658 4.73062L22.4249 8.45813C22.4899 8.56946 22.5132 8.70027 22.4906 8.82719C22.468 8.95411 22.401 9.06886 22.3016 9.15094L20.0193 10.9378C20.0679 11.2898 20.0936 11.6446 20.0961 12Z" fill="#363539"/></svg><?=$merge['outputSetting']?></div>
                     <button type="button" class="btn-close" onclick="$('.settings').removeClass('show');$('.converter').css('z-index', 1000)"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.59216 7.00049L13.0453 2.54736C13.2566 2.33639 13.3755 2.0501 13.3758 1.75148C13.376 1.45286 13.2577 1.16636 13.0467 0.955018C12.8357 0.743674 12.5494 0.624793 12.2508 0.62453C11.9522 0.624266 11.6657 0.74264 11.4543 0.953612L7.00122 5.40674L2.54809 0.953612C2.33675 0.742267 2.05011 0.623535 1.75122 0.623535C1.45233 0.623535 1.16569 0.742267 0.954344 0.953612C0.743 1.16496 0.624268 1.4516 0.624268 1.75049C0.624268 2.04937 0.743 2.33602 0.954344 2.54736L5.40747 7.00049L0.954344 11.4536C0.743 11.665 0.624268 11.9516 0.624268 12.2505C0.624268 12.5494 0.743 12.836 0.954344 13.0474C1.16569 13.2587 1.45233 13.3774 1.75122 13.3774C2.05011 13.3774 2.33675 13.2587 2.54809 13.0474L7.00122 8.59424L11.4543 13.0474C11.6657 13.2587 11.9523 13.3774 12.2512 13.3774C12.5501 13.3774 12.8367 13.2587 13.0481 13.0474C13.2594 12.836 13.3782 12.5494 13.3782 12.2505C13.3782 11.9516 13.2594 11.665 13.0481 11.4536L8.59216 7.00049Z" fill="#5C5D6B"/></svg></button>
                 </div>
                 <div class="setting-main">
-                    <div class="radio-toggle radio-toggle-img mt-3 p-c">
-                        <div class="setting-title"><?=$merge['selectPageOrientation']?></div>
-                        <div class="row">
-                            <div class="col-6">
-                                <input class="hide-input" type="radio" name="orientation" value="portrait" id="orientationPortrait" checked="checked" />
-                                <label for="orientationPortrait">
-                                    <svg width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="1" width="30" height="38" rx="3" stroke="#C7C6C8" stroke-width="2"/></svg>
-                                    <div class="label-name"><?=$merge['potrait']?></div>
-                                </label>
-                            </div>
-                            <div class="col-6">
-                                <input class="hide-input" type="radio" name="orientation" value="landscape" id="orientationLandscape" />
-                                <label for="orientationLandscape">
-                                <svg width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="39" y="5" width="30" height="38" rx="3" transform="rotate(90 39 5)" stroke="#C7C6C8" stroke-width="2"/></svg>
-                                    <div class="label-name"><?=$merge['landscape']?></div>
-                                </label>
+                    <div class="setting-box mt-3 p-c add-number">
+                        <div class="position">
+                            <div class="setting-title">Position</div>
+                            <div class="page-radio">
+                                <div class="row page-radio-input">
+                                    <div class="col-4 input-checkbox">
+                                        <input class="hide-input" type="radio" name="position" value="small" id="topLeft">
+                                        <label for="topLeft"><div class="circle"></div></label>
+                                    </div>
+                                    <div class="col-4 input-checkbox">
+                                        <input class="hide-input" type="radio" name="position" value="small" id="topCenter">
+                                        <label for="topCenter"><div class="circle"></div></label>
+                                    </div>
+                                    <div class="col-4 input-checkbox">
+                                        <input class="hide-input" type="radio" name="position" value="small" id="topRight">
+                                        <label for="topRight"><div class="circle"></div></label>
+                                    </div>
+                                </div>
+                                <div class="position-line">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                                <div class="row page-radio-input">
+                                    <div class="col-4 input-checkbox">
+                                        <input class="hide-input" type="radio" name="position" value="small" id="bottomLeft">
+                                        <label for="bottomLeft"><div class="circle"></div></label>
+                                    </div>
+                                    <div class="col-4 input-checkbox">
+                                        <input class="hide-input" type="radio" name="position" value="small" id="bottomCenter">
+                                        <label for="bottomCenter"><div class="circle"></div></label>
+                                    </div>
+                                    <div class="col-4 input-checkbox">
+                                        <input class="hide-input" type="radio" name="position" value="small" id="bottomRight" checked="checked">
+                                        <label for="bottomRight"><div class="circle"></div></label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <div class="page-margin">
+                            <div class="setting-title">Margin</div>
+                            <select name="margin" class="form-select" aria-label="Margin">
+                                <option value="none">None</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="large">Large</option>
+                                <option value="small">Small</option>
+                            </select>
+                        </div>
+                        
                     </div>
                     <div class="setting-box mt-3 p-c">
-                        <div class="setting-title"><?=$merge['pagesize']?></div>
-                        <select class="form-select" id="pagesize">
-                            <option name="mode" value="a4" selected>A4 (8.27 x 11.69)</option>
-                            <option name="mode" value="a5">A5 (5.83 x 8.27)</option>
-                        </select>
-                    </div>
-                    <div class="radio-toggle radio-toggle-img border-none mt-3 p-c">
-                        <div class="setting-title"><?=$merge['margin']?></div>
+                        <div class="setting-title">First number</div>
+                        <input type="number" class="form-control" placeholder="1" value="1" min="1">
                         <div class="row">
-                            <div class="col-4">
-                                <input class="hide-input" type="radio" name="margin" value="none" id="marginNone" checked="checked" />
-                                <label for="marginNone">
-                                <svg width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M35.9584 5H4.70837C4.21109 5 3.73418 5.19754 3.38255 5.54917C3.03092 5.90081 2.83337 6.37772 2.83337 6.875V33.125C2.83337 33.6223 3.03092 34.0992 3.38255 34.4508C3.73418 34.8025 4.21109 35 4.70837 35H35.9584C36.4557 35 36.9326 34.8025 37.2842 34.4508C37.6358 34.0992 37.8334 33.6223 37.8334 33.125V6.875C37.8334 6.37772 37.6358 5.90081 37.2842 5.54917C36.9326 5.19754 36.4557 5 35.9584 5ZM26.2412 10.0156C27.0089 9.94528 27.7796 10.1132 28.4483 10.4966C29.1171 10.88 29.6515 11.4602 29.9788 12.1582C30.306 12.8562 30.4101 13.6381 30.2771 14.3974C30.144 15.1567 29.7801 15.8565 29.235 16.4016C28.6899 16.9467 27.9901 17.3106 27.2307 17.4437C26.4714 17.5768 25.6896 17.4726 24.9916 17.1454C24.2936 16.8182 23.7134 16.2838 23.33 15.615C22.9466 14.9462 22.7787 14.1755 22.849 13.4078C22.929 12.5351 23.312 11.718 23.9317 11.0983C24.5514 10.4787 25.3685 10.0956 26.2412 10.0156ZM6.27087 32.5C6.02223 32.5 5.78378 32.4012 5.60796 32.2254C5.43215 32.0496 5.33337 31.8111 5.33337 31.5625V24.7164L15.3834 15.7812L22.9576 23.3398L13.7998 32.5H6.27087ZM35.3334 31.5625C35.3334 31.8111 35.2346 32.0496 35.0588 32.2254C34.883 32.4012 34.6445 32.5 34.3959 32.5H17.3357L29.0177 20.818L35.3334 26.0812V31.5625Z" fill="#AEADAF"/></svg>
-                                    <div class="label-name"><?=$merge['no-margin']?></div>
-                                </label>
+                            <div class="col-6">
+                                <div class="setting-title mt-3">Start from page</div>
+                                <input type="number" class="form-control" placeholder="1" value="1" min="1">
                             </div>
-                            <div class="col-4">
-                                <input class="hide-input" type="radio" name="margin" value="small" id="marginSmall" />
-                                <label for="marginSmall">
-                                <svg width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M35.3438 5.75H5.65625C5.18383 5.75 4.73077 5.93767 4.39672 6.27172C4.06267 6.60576 3.875 7.05883 3.875 7.53125V32.4688C3.875 32.9412 4.06267 33.3942 4.39672 33.7283C4.73077 34.0623 5.18383 34.25 5.65625 34.25H35.3438C35.8162 34.25 36.2692 34.0623 36.6033 33.7283C36.9373 33.3942 37.125 32.9412 37.125 32.4688V7.53125C37.125 7.05883 36.9373 6.60576 36.6033 6.27172C36.2692 5.93767 35.8162 5.75 35.3438 5.75ZM26.1124 10.5148C26.8417 10.448 27.5739 10.6076 28.2092 10.9718C28.8446 11.336 29.3522 11.8872 29.6631 12.5503C29.974 13.2134 30.0729 13.9562 29.9465 14.6775C29.8201 15.3988 29.4744 16.0637 28.9566 16.5816C28.4387 17.0994 27.7738 17.4451 27.0525 17.5715C26.3312 17.6979 25.5884 17.599 24.9253 17.2881C24.2622 16.9772 23.711 16.4696 23.3468 15.8342C22.9826 15.1989 22.823 14.4667 22.8898 13.7374C22.9658 12.9084 23.3297 12.1321 23.9184 11.5434C24.5071 10.9547 25.2834 10.5908 26.1124 10.5148ZM7.14062 31.875C6.90442 31.875 6.67788 31.7812 6.51086 31.6141C6.34383 31.4471 6.25 31.2206 6.25 30.9844V24.4806L15.7975 15.9922L22.993 23.1729L14.2931 31.875H7.14062ZM34.75 30.9844C34.75 31.2206 34.6562 31.4471 34.4891 31.6141C34.3221 31.7812 34.0956 31.875 33.8594 31.875H17.6522L28.7502 20.7771L34.75 25.7772V30.9844Z" fill="#AEADAF"/><rect x="1" y="0.5" width="39" height="39" rx="1.5" stroke="#AEADAF" stroke-linecap="square" stroke-dasharray="2 4"/></svg>
-                                    <div class="label-name"><?=$merge['small']?></div>
-                                </label>
-                            </div>
-                            <div class="col-4">
-                                <input class="hide-input" type="radio" name="margin" value="large" id="marginLarge" />
-                                <label for="marginLarge">
-                                <svg width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M31.4375 9.5H9.5625C9.2144 9.5 8.88056 9.63828 8.63442 9.88442C8.38828 10.1306 8.25 10.4644 8.25 10.8125V29.1875C8.25 29.5356 8.38828 29.8694 8.63442 30.1156C8.88056 30.3617 9.2144 30.5 9.5625 30.5H31.4375C31.7856 30.5 32.1194 30.3617 32.3656 30.1156C32.6117 29.8694 32.75 29.5356 32.75 29.1875V10.8125C32.75 10.4644 32.6117 10.1306 32.3656 9.88442C32.1194 9.63828 31.7856 9.5 31.4375 9.5ZM24.6355 13.0109C25.1728 12.9617 25.7123 13.0793 26.1805 13.3476C26.6486 13.616 27.0227 14.0221 27.2518 14.5107C27.4808 14.9993 27.5537 15.5466 27.4606 16.0782C27.3674 16.6097 27.1127 17.0996 26.7311 17.4811C26.3496 17.8627 25.8597 18.1174 25.3282 18.2106C24.7966 18.3037 24.2493 18.2308 23.7607 18.0018C23.2721 17.7727 22.866 17.3986 22.5976 16.9305C22.3293 16.4623 22.2117 15.9228 22.2609 15.3855C22.3169 14.7746 22.5851 14.2026 23.0188 13.7688C23.4526 13.3351 24.0246 13.0669 24.6355 13.0109ZM10.6562 28.75C10.4822 28.75 10.3153 28.6809 10.1922 28.5578C10.0691 28.4347 10 28.2678 10 28.0938V23.3015L17.035 17.0469L22.337 22.3379L15.9265 28.75H10.6562ZM31 28.0938C31 28.2678 30.9309 28.4347 30.8078 28.5578C30.6847 28.6809 30.5178 28.75 30.3438 28.75H18.4016L26.5791 20.5726L31 24.2569V28.0938Z" fill="#AEADAF"/><rect x="1" y="0.5" width="39" height="39" rx="1.5" stroke="#AEADAF" stroke-linecap="square" stroke-dasharray="2 4"/></svg>
-                                    <div class="label-name"><?=$merge['big']?></div>
-                                </label>
+                            <div class="col-6">
+                                <div class="setting-title mt-3">to page</div>
+                                <input type="number" class="form-control" placeholder="1" value="1" min="1">
                             </div>
                         </div>
+
                     </div>
-                    <div class="setting-checkbox p-c">
-                        <input class="hide-input" type="checkbox" name="merge_after" value="1" id="merge_after"  checked="checked"/>
-                        <label for="merge_after"><div class="circle"></div><?=$merge['mergeonepdf']?></label>
-                    </div>
-                    
                 </div>
                 <div class="setting-footer">
-                    <button type="button" class="btn btn-convert" onclick="handleConvert()"><?=$lang['convert_now']?><svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_58_608)"><path d="M12.5 4L11.09 5.41L16.67 11H4.5V13H16.67L11.09 18.59L12.5 20L20.5 12L12.5 4Z" fill="white"/></g><defs><clipPath id="clip0_58_608"><rect width="24" height="24" fill="white" transform="translate(0.5)"/></clipPath></defs></svg></button>
+                    <button type="button" class="btn btn-convert" onclick="handleConvert()">Add page numbers<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_58_608)"><path d="M12.5 4L11.09 5.41L16.67 11H4.5V13H16.67L11.09 18.59L12.5 20L20.5 12L12.5 4Z" fill="white"/></g><defs><clipPath id="clip0_58_608"><rect width="24" height="24" fill="white" transform="translate(0.5)"/></clipPath></defs></svg></button>
 
                 </div>
             </div>
@@ -240,7 +249,7 @@ include '../inc/products.php';
         
         <div class="converter-footer">
             <div class="upload-more convert-now">
-                <button type="button" class="btn btn-convert" onclick="handleConvert()"><?=$lang['convert_now']?><svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_58_608)"><path d="M12.5 4L11.09 5.41L16.67 11H4.5V13H16.67L11.09 18.59L12.5 20L20.5 12L12.5 4Z" fill="white"/></g><defs><clipPath id="clip0_58_608"><rect width="24" height="24" fill="white" transform="translate(0.5)"/></clipPath></defs></svg></button>
+                <button type="button" class="btn btn-convert" onclick="handleConvert()">Add page numbers<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_58_608)"><path d="M12.5 4L11.09 5.41L16.67 11H4.5V13H16.67L11.09 18.59L12.5 20L20.5 12L12.5 4Z" fill="white"/></g><defs><clipPath id="clip0_58_608"><rect width="24" height="24" fill="white" transform="translate(0.5)"/></clipPath></defs></svg></button>
             </div>
         </div>
     </div>
@@ -249,16 +258,12 @@ include '../inc/products.php';
 <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
 <script src="/assets/js/all.js?v=9.4"></script>
 <script>
-Sortable.create(pdfItems, {
-    handle: '.btn-drag',
-    animation: 150
-});
+Sortable.create(pdfItems, { /* options */ });
 var pdfs = [];
 
 $("#drop-area").dmUploader({
     url: '/upload.php',
-    allowedTypes: 'image/*',
-    extFilter: ['jpg', 'jpeg','png','gif'],
+    multiple: false,
     headers: {
     'Access-Control-Allow-Origin': "*"
     },
@@ -289,23 +294,14 @@ function updateError () {
 }
 
 function showPreview(id, file) {
-    if (typeof FileReader !== 'undefined'){
-      var reader = new FileReader();
-      var img = $('<img />');
-        
-      reader.onload = function (e) {
-        img.attr('src', e.target.result);
-        $('#pdfItems').append('<div class="pdf-item" id="' + id + '" data-filename="' + file.name.replace(/\.[^/.]+$/, "") + '"><button class="btn btn-drag" type="button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_9_891)"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.9995 0.439331L16.2798 4.71966L15.2192 5.78032L12.7486 3.30979L12.749 11.25H20.6888L18.2192 8.78032L19.2798 7.71966L23.5602 12L19.2798 16.2803L18.2192 15.2197L20.6888 12.75H12.7491L12.7494 20.6894L15.2192 18.2197L16.2798 19.2803L11.9995 23.5606L7.71917 19.2803L8.77983 18.2197L11.2494 20.6892L11.2491 12.75H3.31016L5.77983 15.2197L4.71917 16.2803L0.438843 12L4.71917 7.71966L5.77983 8.78032L3.31016 11.25H11.249L11.2486 3.31151L8.77983 5.78032L7.71917 4.71966L11.9995 0.439331Z" fill="#373737"/></g><defs><clipPath id="clip0_9_891"><rect width="24" height="24" fill="white"/></clipPath></defs></svg></button><div class="file-info mt-2 uploading"><img src="' + e.target.result + '" alt="Photo"><div class="pdf-filename">' + file.name + '</div><div class="pdf-file-size">' + formatBytes(file.size) + '</div></div><div class="progress-bar"></div><div class="item-del" onclick="removeItem(\'' + id + '\')"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.3268 6.00028L11.0377 2.28935C11.2139 2.11354 11.3129 1.87496 11.3131 1.62611C11.3134 1.37726 11.2147 1.13851 11.0389 0.962393C10.8631 0.786273 10.6245 0.687206 10.3757 0.686986C10.1268 0.686766 9.88807 0.785412 9.71195 0.961221L6.00102 4.67216L2.29008 0.961221C2.11396 0.785101 1.87509 0.686157 1.62602 0.686157C1.37694 0.686157 1.13807 0.785101 0.961953 0.961221C0.785833 1.13734 0.68689 1.37621 0.68689 1.62528C0.68689 1.87436 0.785833 2.11323 0.961953 2.28935L4.67289 6.00028L0.961953 9.71122C0.785833 9.88734 0.68689 10.1262 0.68689 10.3753C0.68689 10.6244 0.785833 10.8632 0.961953 11.0393C1.13807 11.2155 1.37694 11.3144 1.62602 11.3144C1.87509 11.3144 2.11396 11.2155 2.29008 11.0393L6.00102 7.32841L9.71195 11.0393C9.88807 11.2155 10.1269 11.3144 10.376 11.3144C10.6251 11.3144 10.864 11.2155 11.0401 11.0393C11.2162 10.8632 11.3151 10.6244 11.3151 10.3753C11.3151 10.1262 11.2162 9.88734 11.0401 9.71122L7.3268 6.00028Z" fill="#5C5D6B"></path></svg></div></div>');
-      }
-      /* ToDo: do something with the img! */
-      reader.readAsDataURL(file);
-
-      $('#upload').addClass('disabled');
-      $('#converter').addClass('d-block');
-      $('#convert-wrapper').removeClass('disabled');
-      $('#handle-upload').addClass('active');
-      $('body').addClass('d-scroll');
-    }
+    $filename = file.name.replace(/\.[^/.]+$/, "");
+    $filename = fixFilename($filename);
+    $('#pdfItems').append('<div class="preview-file" id="' + id + '" data-filename="' + $filename + '"><div class="file-info uploading"><svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.00005 47.8333V53.6667C7.00005 53.9761 7.12296 54.2728 7.34176 54.4916C7.56055 54.7104 7.8573 54.8333 8.16671 54.8333H47.8334C48.1428 54.8333 48.4396 54.7104 48.6583 54.4916C48.8771 54.2728 49.0001 53.9761 49.0001 53.6667V11.2257V11.6667H38.5V1.16667H39.0332H8.16671C7.8573 1.16667 7.56055 1.28958 7.34176 1.50838C7.12296 1.72717 7.00005 2.02391 7.00005 2.33333V32.6667H30.3369C31.6237 32.6667 32.6667 33.7097 32.6667 35.0035V45.4965C32.6672 45.8029 32.6073 46.1064 32.4904 46.3897C32.3736 46.673 32.2021 46.9304 31.9858 47.1474C31.7694 47.3644 31.5125 47.5367 31.2295 47.6544C30.9466 47.7721 30.6433 47.8329 30.3369 47.8333H7.00005ZM5.83338 47.8333H4.66321C4.35671 47.8332 4.05324 47.7726 3.77019 47.655C3.48713 47.5374 3.23004 47.3652 3.01364 47.1481C2.79723 46.9311 2.62576 46.6735 2.50903 46.3901C2.3923 46.1066 2.33261 45.803 2.33338 45.4965V35.0035C2.33292 34.6971 2.39282 34.3936 2.50966 34.1103C2.62649 33.827 2.79798 33.5696 3.01432 33.3526C3.23067 33.1356 3.48764 32.9633 3.77055 32.8456C4.05347 32.7279 4.3568 32.6671 4.66321 32.6667H5.83338V2.33333C5.83338 1.71449 6.07921 1.121 6.5168 0.683418C6.95438 0.245833 7.54788 1.08323e-07 8.16671 1.08323e-07H39.0332C39.3418 -9.39011e-05 39.6472 0.0610034 39.932 0.179756C40.2168 0.298509 40.4752 0.472559 40.6922 0.691833L49.4924 9.58533C49.9243 10.022 50.1666 10.6114 50.1667 11.2257V53.6667C50.1667 54.2855 49.9209 54.879 49.4833 55.3166C49.0457 55.7542 48.4522 56 47.8334 56H8.16671C7.54788 56 6.95438 55.7542 6.5168 55.3166C6.07921 54.879 5.83338 54.2855 5.83338 53.6667V47.8333ZM48.7469 10.5C48.7206 10.467 48.6926 10.4355 48.6629 10.4055L39.8627 1.51317C39.8034 1.45294 39.7377 1.39935 39.6667 1.35333V10.5H48.7469ZM16.3334 28H40.8334V29.1667H16.3334V28ZM16.3334 22.1667H40.8334V23.3333H16.3334V22.1667ZM35 33.8333H40.8334V35H35V33.8333ZM35 39.6667H40.8334V40.8333H35V39.6667ZM35 45.5H40.8334V46.6667H35V45.5ZM13.1192 38.6027C13.1192 37.7405 12.8567 37.0918 12.3305 36.6567C11.8044 36.2227 11.0355 36.0045 10.0264 36.0045H7.36638V44.3333H9.13155V41.37H9.88988C10.9224 41.37 11.7192 41.1332 12.2792 40.6583C12.8392 40.1847 13.1192 39.4987 13.1192 38.6027V38.6027ZM9.13155 39.9233V37.45H9.93538C10.4172 37.45 10.7719 37.5492 10.997 37.7463C11.2234 37.9447 11.3354 38.2503 11.3354 38.6645C11.3354 39.074 11.2012 39.3867 10.9317 39.6013C10.6622 39.816 10.255 39.9233 9.71255 39.9233H9.13155V39.9233ZM21.602 40.0878C21.602 38.801 21.2252 37.7977 20.4739 37.0802C19.7214 36.3627 18.6655 36.0033 17.3064 36.0033H14.6919V44.3333H17.0497C18.5232 44.3333 19.6514 43.9693 20.4307 43.239C21.2124 42.5098 21.602 41.4598 21.602 40.089V40.0878ZM19.7669 40.1345C19.7669 41.9603 18.9164 42.8738 17.2154 42.8738H16.457V37.4512H17.3974C18.977 37.4512 19.7669 38.3448 19.7669 40.1345ZM25.0647 44.3333V41.041H27.8904V39.599H25.0647V37.4523H28.1015V36.0057H23.3275V44.3333H25.0659H25.0647Z" fill="#D71919"/></svg><div class="pdf-filename">' + file.name + '</div><div class="pdf-file-size">' + formatBytes(file.size) + '</div></div><div class="progress-bar"></div><div class="item-del" onclick="removeItem(\'' + id + '\')"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.3268 6.00028L11.0377 2.28935C11.2139 2.11354 11.3129 1.87496 11.3131 1.62611C11.3134 1.37726 11.2147 1.13851 11.0389 0.962393C10.8631 0.786273 10.6245 0.687206 10.3757 0.686986C10.1268 0.686766 9.88807 0.785412 9.71195 0.961221L6.00102 4.67216L2.29008 0.961221C2.11396 0.785101 1.87509 0.686157 1.62602 0.686157C1.37694 0.686157 1.13807 0.785101 0.961953 0.961221C0.785833 1.13734 0.68689 1.37621 0.68689 1.62528C0.68689 1.87436 0.785833 2.11323 0.961953 2.28935L4.67289 6.00028L0.961953 9.71122C0.785833 9.88734 0.68689 10.1262 0.68689 10.3753C0.68689 10.6244 0.785833 10.8632 0.961953 11.0393C1.13807 11.2155 1.37694 11.3144 1.62602 11.3144C1.87509 11.3144 2.11396 11.2155 2.29008 11.0393L6.00102 7.32841L9.71195 11.0393C9.88807 11.2155 10.1269 11.3144 10.376 11.3144C10.6251 11.3144 10.864 11.2155 11.0401 11.0393C11.2162 10.8632 11.3151 10.6244 11.3151 10.3753C11.3151 10.1262 11.2162 9.88734 11.0401 9.71122L7.3268 6.00028Z" fill="#5C5D6B"></path></svg></div></div>');
+    $('#upload').addClass('disabled');
+    $('#converter').addClass('d-block');
+    $('#convert-wrapper').removeClass('disabled');
+    $('#handle-upload').addClass('active');
+    $('body').addClass('d-scroll');
 }
 
 function removeItem(id) {
@@ -360,10 +356,8 @@ function handleConvert() {
     $('.converter-footer').addClass('disabled');
 	countPDF = $(".pdf-item").length;
 
-    var isMode = $('#pagesize').find(":selected").val();
-    var isMargin = $('input[name=margin]:checked').val();
-    var isOrientation = $('input[name=orientation]:checked').val();
-    var isMerge = ($('input[name=mode]:checked').val() === 1) ? true : false;
+    var isMode = $('input[name=mode]:checked').val();
+    var isDensity = $('input[name=density]:checked').val();
     var items = [];
 
 	for (var i = 0; i < countPDF; i++) {
@@ -380,13 +374,11 @@ function handleConvert() {
 		method: "POST", //First change type to method here
 
 		data: {
-			"task": 'jpg2pdf',
+			"task": 'pdf2jpg',
             "files": items,
             "config": {
                 "mode": isMode,
-                "margin": isMargin,
-                "orientation": isOrientation,
-                "merge_after": isMerge
+                "density": isDensity
             }
 		},
 		success: function(response) {
@@ -401,10 +393,17 @@ function handleConvert() {
 
 function showResponse(response) {
     var obj = jQuery.parseJSON(response);
+    
+    if (typeof response) {
+        console.log(typeof response);
+    } else {
+        console.log('Error');
+    }
     if (response.indexOf("error") === -1) {
         $('#convert-wrapper').addClass('disabled');
         $('#download-final').addClass('active');
         $("#download-btn").attr("href", obj.data.url);
+        $('#download-btn').attr("download", "Snappdf_" + $("#" + pdfs[0]['id_upload']).data("filename") + '.' + obj.data.output_file);
         $("#downloadFilename").text('SnapPDF_c78099b30df94bb4999c3731acdadbd6.docx');
         $("#dlFileSize").text(formatBytes(obj.data.file_size));
         $('.settings').html('<div class="adload"><img src="https://place-hold.it/300x500?text=ADS" alt="" width="100%"></div>');

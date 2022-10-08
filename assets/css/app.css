@@ -114,6 +114,83 @@ body.d-scroll {
   color: #6A696C;
 }
 
+.add-number {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 32px;
+}
+
+.add-number .position {
+  width: 106px;
+}
+
+.add-number .page-margin {
+  width: calc(100% - 138px);
+}
+
+.page-radio {
+  width: 106px;
+  height: 128px;
+  border: 1px solid #AEADAF;
+  border-radius: 4px;
+  position: relative;
+  padding: 7px;
+}
+
+.page-radio .page-radio-input {
+  height: 24px;
+  --bs-gutter-x: 7px;
+}
+
+.page-radio .input-checkbox {
+  height: 24px;
+}
+
+.input-checkbox .circle {
+  width: 24px;
+  height: 24px;
+  background: #FFFFFF;
+  border: 1px solid #AEADAF;
+  border-radius: 50%;
+}
+
+.input-checkbox input[type=radio]:checked + label .circle {
+  background: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0.5' y='0.5' width='23' height='23' rx='11.5' fill='%236D18DC'/%3E%3Crect x='0.5' y='0.5' width='23' height='23' rx='11.5' stroke='%236D18DC'/%3E%3Cg clip-path='url(%23clip0_134_2376)'%3E%3Cpath d='M17 8.40039L10.125 15.2754L7 12.1504' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_134_2376'%3E%3Crect width='16' height='16' fill='white' transform='translate(4 4)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E") center no-repeat;
+  border: none;
+}
+
+.position-line {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 0px;
+  gap: 9px;
+  width: 86px;
+  height: 43px;
+  margin: 10px 0;
+}
+
+.position-line > * {
+  width: 86px;
+  height: 4px;
+  background: #EDEDED;
+}
+
 @media (min-width: 768px) {
   .apphow-box {
     display: -ms-grid;

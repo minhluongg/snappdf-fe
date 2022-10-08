@@ -45,6 +45,7 @@ function showPreview(id, file) {
     $('#converter').addClass('d-block');
     $('#convert-wrapper').removeClass('disabled');
     $('#handle-upload').addClass('active');
+    $('body').addClass('d-scroll');
 }
 
 function update_file_status(id, data) {

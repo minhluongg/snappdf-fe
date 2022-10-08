@@ -23,4 +23,3 @@ $merge['whyChoose_5'] = "MERGE - Fast processing speed";
 $merge['why-choose_desc5'] = "MERGE - Fast processing speed is our top priority. Saves you time and gets the job done sooner than expected!";
 $merge['whyChoose_6'] = "MERGE - Use on any device";
 $merge['why-choose_desc6'] = "MERGE - SnapPDF online - you can use it on any device such as Android phone, IOS, or Windows PC, Macbook... without downloading any additional software.";
-

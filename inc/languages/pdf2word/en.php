@@ -24,3 +24,6 @@ $merge['why-choose_desc5'] = "MERGE - Fast processing speed is our top priority.
 $merge['whyChoose_6'] = "MERGE - Use on any device";
 $merge['why-choose_desc6'] = "MERGE - SnapPDF online - you can use it on any device such as Android phone, IOS, or Windows PC, Macbook... without downloading any additional software.";
 
+
+
+$merge['errorFileExtension'] = "Error, cannot upload because the file format is not supported, please choose the file with the extension:";

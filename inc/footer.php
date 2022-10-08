@@ -22,7 +22,7 @@
                             </div>
                         </div>
                         <div class="footer-list col-6">
-                            <h3 class="footer-title">SnapPDF</h3>
+                            <h3 class="footer-title"><?=$lang['products']?></h3>
                             <div class="footer-link">
                                 <ul class="list-unstyled">
                                     <li><a href="/"><?=$home['all_product']?></a></li>
@@ -43,7 +43,7 @@
                         <ul class="list-unstyled">
                             <li><a href=""><?=$home['help_center']?></a></li>
                             <li><a href=""><?=$home['tos']?></a></li>
-                            <li><a href=""><?=$home['slogan']?></a></li>
+                            <li><a href="/privacy-policy">Policy</a></li>
                         </ul>
                     </div>
                     <div class="copyright-text">© 2021–2022 SnapTeam. All rights reserved.</div>
