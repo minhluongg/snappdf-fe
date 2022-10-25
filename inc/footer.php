@@ -14,10 +14,10 @@
                             <h3 class="footer-title">SnapPDF</h3>
                             <div class="footer-link">
                                 <ul class="list-unstyled">
-                                    <li><a href="/"><?=$home['home_text']?></a></li>
-                                    <li><a href="/"><?=$home['pricing']?></a></li>
-                                    <li><a href="/">Blog</a></li>
-                                    <li><a href="/"><?=$home['help']?></a></li>
+                                    <li><a href="javascript:void(0)"><?=$home['home_text']?></a></li>
+                                    <li><a href="javascript:void(0)"><?=$home['pricing']?></a></li>
+                                    <li><a href="javascript:void(0)">Blog</a></li>
+                                    <li><a href="javascript:void(0)"><?=$home['help']?></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -25,10 +25,10 @@
                             <h3 class="footer-title"><?=$lang['products']?></h3>
                             <div class="footer-link">
                                 <ul class="list-unstyled">
-                                    <li><a href="/"><?=$home['all_product']?></a></li>
-                                    <li><a href="/"><?=$home['features']?></a></li>
-                                    <li><a href="/"><?=$home['faq']?></a></li>
-                                    <li><a href="/">API</a></li>
+                                    <li><a href="javascript:void(0)"><?=$home['all_product']?></a></li>
+                                    <li><a href="javascript:void(0)"><?=$home['features']?></a></li>
+                                    <li><a href="javascript:void(0)"><?=$home['faq']?></a></li>
+                                    <li><a href="javascript:void(0)">API</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -41,8 +41,8 @@
                 <div class="container">
                     <div class="copyright-link">
                         <ul class="list-unstyled">
-                            <li><a href=""><?=$home['help_center']?></a></li>
-                            <li><a href=""><?=$home['tos']?></a></li>
+                            <li><a href="javascript:void(0)"><?=$home['help_center']?></a></li>
+                            <li><a href="javascript:void(0)"><?=$home['tos']?></a></li>
                             <li><a href="/privacy-policy">Policy</a></li>
                         </ul>
                     </div>

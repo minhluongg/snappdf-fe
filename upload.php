@@ -86,7 +86,7 @@ if ($_FILES["file"]["error"] != 0) {
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => 'http://34.143.135.203:8000/api/v1/uploads',
+  CURLOPT_URL => 'http://34.143.135.203:5004/api/v1/uploads',
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => '',
   CURLOPT_MAXREDIRS => 10,

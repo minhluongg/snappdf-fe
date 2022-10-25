@@ -42,7 +42,7 @@
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="/jquery.dm-uploader.min.js"></script>
-<script src="/assets/js/ui.js?v=<?=time()?>"></script>
+<script src="/assets/js/ui.js?v=1.11"></script>
 <script>
   var pdfs = [];
 // $("#drop-area").dmUploader({
@@ -113,10 +113,13 @@ function update_file_progress(id, percent, color, active)
   //   bar.html(percent + '%');
   // }
 
-  if (color !== false){
-    bar.removeClass('bg-success bg-info bg-warning bg-danger');
-    bar.addClass('bg-' + color);
-  }
+    if (addclasss !== false) {
+        bar.removeClass('progress-bar-striped progress-bar-animated');
+        bar.addClass(addclasss);
+        if (addclasss === 'progress-success') {
+            $('#' + id).find('.file-info').removeClass('uploading');
+        }
+    }
 }
 </script>
 </body>

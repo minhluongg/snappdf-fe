@@ -1,3 +1,9 @@
+header.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
 .app-how {
   padding-top: 72px;
   background-color: #fff;

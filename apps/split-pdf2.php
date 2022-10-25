@@ -48,10 +48,9 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="/assets/js/jquery.dm-uploader.min.js"></script>
+<script src="/assets/js/all.js?v=1.11"></script>
 <script src="//mozilla.github.io/pdf.js/build/pdf.js"></script>
 
-<script src="/assets/js/ui.js?v=<?=time()?>"></script>
 <script>
 function formatBytes(a,b=2){if(!+a)return"0 Bytes";const c=0>b?0:b,d=Math.floor(Math.log(a)/Math.log(1024));return`${parseFloat((a/Math.pow(1024,d)).toFixed(c))} ${["Bytes","KB","MB","GB","TB","PB","EB","ZB","YB"][d]}`}
 
@@ -127,65 +126,21 @@ $("#drop-area").dmUploader({
     },
     onUploadProgress: function(id, percent) {
         // Updating file progress
-        update_file_progress(id, percent);
+        ui_update_pdf_progress(id, percent);
     },
     onUploadSuccess: function(id, data) {
         // A file was successfully uploaded
         update_file_status(id, data);
-        // ui_multi_update_file_progress(id, 100, 'success', false);
+        ui_update_pdf_progress(id, 100, 'progress-success', false);
     },
     onUploadError: function(id, xhr, status, message) {
         // update_file_status(id, 'danger', message);
-        update_file_progress(id, 0, 'danger', false);
+        ui_update_pdf_progress(id, 0, 'danger', false);
     },
     onInit: function() {
         console.log('Callback: Plugin initialized');
     },
 });
-
-
-
-function update_file_status(id, data) {
-    const obj = JSON.parse(data);
-    if (!obj.data.id) {
-        console.log('Alert error');
-    } else {
-        pdfs.push({
-            'id_upload': id,
-            'id_be': obj.data.id
-        });
-        console.log(pdfs);
-
-    }
-
-}
-
-
-// UI 
-function update_file_progress(id, percent, color, active) {
-    console.log('id: ' + id + ' - ' + percent);
-    color = (typeof color === 'undefined' ? false : color);
-    active = (typeof active === 'undefined' ? true : active);
-
-
-
-    var bar = $('#' + id).find('div.progress-bar');
-
-
-    bar.width(percent + '%').attr('aria-valuenow', percent);
-    bar.toggleClass('progress-bar-striped progress-bar-animated', active);
-
-    // if (percent === 0){
-    //   bar.html('');
-    // } else {
-    //   bar.html(percent + '%');
-    // }
-
-    if (color !== false) {
-        bar.removeClass('bg-success bg-info bg-warning bg-danger');
-        bar.addClass('bg-' + color);
-    }
-}
 
 // function findID(idUpload) {
 
@@ -198,18 +153,7 @@ function update_file_progress(id, percent, color, active) {
 // }
 
 function handleConvert() {
-	countPDF = $(".pdf-item").length;
-    var items = [];
-
-	for (var i = 0; i < countPDF; i++) {
-        countPdfArr = pdfs.length;
-        for (var j = 0; j < countPdfArr; j++) {
-            if ($(".pdf-item")[i].id === pdfs[j]['id_upload']) {
-                items.push(pdfs[j]['id_be']);
-            }
-        }
-	}
-    console.log(items);
+    var items = getItems();
 
 	// $.ajax({
 	// 	url: "/tasks.php",

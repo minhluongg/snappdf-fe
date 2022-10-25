@@ -42,7 +42,7 @@
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="/jquery.dm-uploader.min.js"></script>
-<script src="/assets/js/ui.js?v=<?=time()?>"></script>
+<script src="/assets/js/ui.js?v=1.11"></script>
 <script>
   var pdfs = [];
 // $("#drop-area").dmUploader({
