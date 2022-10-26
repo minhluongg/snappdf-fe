@@ -197,6 +197,15 @@ body.d-scroll {
   background: #EDEDED;
 }
 
+.input-about {
+  margin-top: 6px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  color: #77777A;
+}
+
 @media (min-width: 768px) {
   .apphow-box {
     display: -ms-grid;

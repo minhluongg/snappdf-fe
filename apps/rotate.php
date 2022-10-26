@@ -189,6 +189,11 @@ include '../inc/products.php';
                                 <label for="modeExtract" onclick="rotatePDF(1)"><?=$rotate['left']?></label>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="text-muted mt-3"> <span id="degNumber">0</span> deg</div>
+                            </div>
+                        </div>
                     </div>
                     
                 </div>
@@ -218,7 +223,6 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://mozilla.github.io/pdf.js/build
 
 Sortable.create(pdfItems, { /* options */ });
 var pdfs = [];
-var rotateInfo;
 
 $("#drop-area").dmUploader({
     url: '/upload.php',
@@ -229,16 +233,13 @@ $("#drop-area").dmUploader({
       showPreview(id, file);
     },
     onUploadProgress: function(id, percent) {
-        // Updating file progress
         ui_update_pdf_progress(id, percent);
     },
     onUploadSuccess: function(id, data) {
-        // A file was successfully uploaded
         update_file_status(id, data);
         ui_update_pdf_progress(id, 100, 'progress-success', false);
     },
     onUploadError: function(id, xhr, status, message) {
-        // update_file_status(id, 'danger', message);
         ui_update_pdf_progress(id, 0, 'progress-success', false);
         updateError(id, 0);
     },
@@ -255,8 +256,9 @@ function rotatePDF(side) {
     var numSide =  (side === 0) ? 90 : -90;
     var angle = getCurrentRotation('.pdf-item .file_canvas');
     angle = angle + numSide;
-    rotateInfo = angle;
     $('.pdf-item .file_canvas').css("transform","rotate(" + angle + "deg)");
+    // degNumber
+    $('#degNumber').text(angle);
 }
 
 
@@ -356,41 +358,11 @@ function removeItem(id) {
     }
 }
 
-function update_file_status(id, data) {
-    const obj = JSON.parse(data);
-    if (!obj.data.id) {
-        console.log('Alert error');
-    } else {
-        pdfs.push({
-            'id_upload': id,
-            'id_be': obj.data.id
-        });
-
-    }
-
-}
-
-
-// UI 
-function update_file_progress(id, percent, addclasss, active) {
-    color = (typeof color === 'undefined' ? false : color);
-    active = (typeof active === 'undefined' ? true : active);
-
-    var bar = $('#' + id).find('div.progress-bar');
-
-    bar.width(percent + '%').attr('aria-valuenow', percent);
-    bar.toggleClass('progress-bar-striped progress-bar-animated', active);
-
-    if (addclasss !== false) {
-        bar.removeClass('progress-bar-striped progress-bar-animated');
-        bar.addClass(addclasss);
-        if (addclasss === 'progress-success') {
-            $('#' + id).find('.file-info').removeClass('uploading');
-        }
-    }
-}
-
 function handleConvert() {
+    var degNumber = $('#degNumber').text();
+    if (degNumber === '0') {
+        return showAlertError('Bạn chưa chọn độ xoay, độ xoay hiện tại là 0 vì vậy nó sẽ trả về file gốc');
+    }
     ui_converting();
     $('.settings').removeClass('show');
     var items = getItems();
@@ -399,7 +371,7 @@ function handleConvert() {
 			"task": 'rotate',
             "files": items,
             "config": {
-                "rotation": rotateInfo
+                "rotation": degNumber
             }
 		};
     getTaskId(dataSend);

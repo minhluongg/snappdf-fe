@@ -177,15 +177,15 @@ include '../inc/products.php';
                             <div class="page-radio">
                                 <div class="row page-radio-input">
                                     <div class="col-4 input-checkbox">
-                                        <input class="hide-input" type="radio" name="position" value="small" id="topLeft">
+                                        <input class="hide-input" type="radio" name="position" value="topleft" id="topLeft">
                                         <label for="topLeft"><div class="circle"></div></label>
                                     </div>
                                     <div class="col-4 input-checkbox">
-                                        <input class="hide-input" type="radio" name="position" value="small" id="topCenter">
+                                        <input class="hide-input" type="radio" name="position" value="top" id="topCenter">
                                         <label for="topCenter"><div class="circle"></div></label>
                                     </div>
                                     <div class="col-4 input-checkbox">
-                                        <input class="hide-input" type="radio" name="position" value="small" id="topRight">
+                                        <input class="hide-input" type="radio" name="position" value="topright" id="topRight">
                                         <label for="topRight"><div class="circle"></div></label>
                                     </div>
                                 </div>
@@ -197,15 +197,15 @@ include '../inc/products.php';
                                 </div>
                                 <div class="row page-radio-input">
                                     <div class="col-4 input-checkbox">
-                                        <input class="hide-input" type="radio" name="position" value="small" id="bottomLeft">
+                                        <input class="hide-input" type="radio" name="position" value="bottomleft" id="bottomLeft">
                                         <label for="bottomLeft"><div class="circle"></div></label>
                                     </div>
                                     <div class="col-4 input-checkbox">
-                                        <input class="hide-input" type="radio" name="position" value="small" id="bottomCenter">
+                                        <input class="hide-input" type="radio" name="position" value="bottom" id="bottomCenter">
                                         <label for="bottomCenter"><div class="circle"></div></label>
                                     </div>
                                     <div class="col-4 input-checkbox">
-                                        <input class="hide-input" type="radio" name="position" value="small" id="bottomRight" checked="checked">
+                                        <input class="hide-input" type="radio" name="position" value="bottomright" id="bottomRight" checked="checked">
                                         <label for="bottomRight"><div class="circle"></div></label>
                                     </div>
                                 </div>
