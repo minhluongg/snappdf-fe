@@ -14,7 +14,6 @@ function onlyUnique(value, index, self) {
 
 function update_file_status(id, data) {
     const obj = JSON.parse(data);
-    console.log(data);
     if (!obj.data.id) {
         console.log('Alert error');
     } else {
@@ -26,6 +25,14 @@ function update_file_status(id, data) {
     }
 }
 
+function showErrorInput(elId, errorInfo) {
+    $('#' + elId).addClass('is-invalid');
+    $('#' + elId).next().html(errorInfo);
+}
+function hiddenErrorInput(elId) {
+    $('#' + elId).removeClass('is-invalid');
+    $('#' + elId).next().html('');
+}
 function ui_converting() {
     $('#handle-upload').removeClass('active');
     $('#task-process').addClass('active');

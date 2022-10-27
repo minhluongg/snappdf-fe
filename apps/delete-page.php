@@ -14,7 +14,7 @@ $isCanonical = $isHomeUrl . $slug;
 
 include '../inc/header.php';
 ?>
-<link href="/assets/css/app.css?v=1.5" rel="stylesheet">
+<link href="/assets/css/app.css?v=1.6" rel="stylesheet">
 <div class="main-cover">
     <div class="container">
         <div class="upload" id="upload">
@@ -200,7 +200,7 @@ include '../inc/products.php';
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
-<script src="/assets/js/all.js?v=1.11"></script>
+<script src="/assets/js/all.js?v=1.2"></script>
 <script src="//mozilla.github.io/pdf.js/build/pdf.js"></script>
 <script>
 Sortable.create(pdfItems, { /* options */ });
@@ -316,14 +316,6 @@ function removeItem(id) {
     }
 }
 
-function showErrorInput(elId, errorInfo) {
-    $('#' + elId).addClass('is-invalid');
-    $('#' + elId).next().html(errorInfo);
-}
-function hiddenErrorInput(elId) {
-    $('#' + elId).removeClass('is-invalid');
-    $('#' + elId).next().html('');
-}
 
 
 $('#pageRange').on('input', function() {
@@ -377,24 +369,7 @@ $('#pageRange').on('input', function() {
 
 });
 
-// UI 
-function update_file_progress(id, percent, addclasss, active) {
-    color = (typeof color === 'undefined' ? false : color);
-    active = (typeof active === 'undefined' ? true : active);
 
-    var bar = $('#' + id).find('div.progress-bar');
-
-    bar.width(percent + '%').attr('aria-valuenow', percent);
-    bar.toggleClass('progress-bar-striped progress-bar-animated', active);
-
-    if (addclasss !== false) {
-        bar.removeClass('progress-bar-striped progress-bar-animated');
-        bar.addClass(addclasss);
-        if (addclasss === 'progress-success') {
-            $('#' + id).find('.file-info').removeClass('uploading');
-        }
-    }
-}
 
 function handleConvert() {
     ui_converting();
