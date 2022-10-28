@@ -309,6 +309,27 @@ body.d-scroll {
         }
     }
 }
+.input-box {
+    width: 100%;
+}
+.error-input {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    color: #D71919;
+    margin-top: 6px;
+}
+.btn {
+    .btn-rotate {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 8px 12px 8px 8px;
+        gap: 8px;
+        background: #EDEDED;
+        border-radius: 4px;
+    }
+}
 
 @media (min-width: 992px) {
     .settings {

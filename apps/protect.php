@@ -3,8 +3,8 @@
  * Config
  */
 $multiLanguage = true;
-$slug = '/pdf-to-jpg';
-$privateLanguage = 'pdf2jpg/';
+$slug = '/protect-pdf';
+$privateLanguage = 'protect/';
 // include 
 include '../inc/config.php';
 
@@ -14,7 +14,7 @@ $isCanonical = $isHomeUrl . $slug;
 
 include '../inc/header.php';
 ?>
-<link href="/assets/css/app.css?v=1.6" rel="stylesheet">
+<link href="/assets/css/app.css?v=1.62" rel="stylesheet">
 <div class="main-cover">
     <div class="container">
         <div class="upload" id="upload">
@@ -102,20 +102,21 @@ include '../inc/products.php';
                         <form class="form-horizontal" method="" action="">
                             <div class="setting-title">Set a password</div>
                             <div class="input-password">
-                                <input id="password-field" type="password" name="password" class="form-control">
+                                <input id="password-field" type="password" class="form-control"  autocomplete="new-password" name="new-password">
                                 <span toggle="#password-field" class="eye-slash toggle-password"></span>
                             </div>
                             <div class="setting-title mt-3">Repeat password</div>
                             <div class="input-password">
-                                <input type="password" id="repeatpassword-field" name="repeat-password" class="form-control">
+                                <input type="password" id="repeatpassword-field" class="form-control" autocomplete="new-password" name="confirm-new-password">
                                 <span toggle="#repeatpassword-field" class="eye-slash toggle-password"></span>
                             </div>
+                            <div class="error-input"></div>
                         </form>
                     </div>
                     
                 </div>
                 <div class="setting-footer">
-                    <button type="button" class="btn btn-convert" onclick="handleConvert()">Protect PDF<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_58_608)"><path d="M12.5 4L11.09 5.41L16.67 11H4.5V13H16.67L11.09 18.59L12.5 20L20.5 12L12.5 4Z" fill="white"/></g><defs><clipPath id="clip0_58_608"><rect width="24" height="24" fill="white" transform="translate(0.5)"/></clipPath></defs></svg></button>
+                    <button type="button" class="btn btn-convert" id="btn-submit" onclick="handleConvert()" disabled>Protect PDF<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_58_608)"><path d="M12.5 4L11.09 5.41L16.67 11H4.5V13H16.67L11.09 18.59L12.5 20L20.5 12L12.5 4Z" fill="white"/></g><defs><clipPath id="clip0_58_608"><rect width="24" height="24" fill="white" transform="translate(0.5)"/></clipPath></defs></svg></button>
                 </div>
             </div>
         </div>
@@ -124,7 +125,7 @@ include '../inc/products.php';
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
-<script src="/assets/js/all.js?v=1.2"></script>
+<script src="/assets/js/all.js?v=1.22"></script>
 <script>
 Sortable.create(pdfItems, { /* options */ });
 var pdfs = [];
@@ -169,6 +170,40 @@ $(".toggle-password").click(function() {
 function updateError () {
     console.log(0);
 }
+$( "#repeatpassword-field").change(function() {
+    validationPassword();
+});
+$( "#password-field").change(function() {
+    validationPassword();
+});
+
+function validationPassword() {
+    if ($('#password-field').val() != '' && $('#repeatpassword-field').val() != '') {
+        if ($('#password-field').val() != $('#repeatpassword-field').val()) {
+            $('.error-input').text('The password you just entered does not match, please check again');
+        } else {
+            $('.error-input').text('');
+        }
+    }
+}
+$('#password-field').on('input', function() {
+    showBtnSubmit();
+});
+
+$('#repeatpassword-field').on('input', function() {
+    showBtnSubmit();
+});
+
+function showBtnSubmit() {
+    $('.error-input').text('');
+    if ($('#password-field').val() != '' && $('#repeatpassword-field').val() != '') {
+        if ($('#password-field').val() === $('#repeatpassword-field').val()) {
+            $('#btn-submit').prop("disabled", false);
+        } else {
+            $('#btn-submit').prop("disabled", true);
+        }
+    }
+}
 
 
 function removeItem(id) {
@@ -184,18 +219,14 @@ function removeItem(id) {
 
 function handleConvert() {
     ui_converting();
-    $('.settings').removeClass('show');
-
-    var isMode = $('input[name=mode]:checked').val();
-    var isDensity = $('input[name=density]:checked').val();
+    var isPassword = $('input[name=new-password]').val();
     var items = getItems();
 
     var dataSend = {
-			"task": 'pdf2jpg',
+			"task": 'protect',
             "files": items,
             "config": {
-                "mode": isMode,
-                "density": isDensity
+                "password": isPassword
             }
 		};
     getTaskId(dataSend);

@@ -140,15 +140,14 @@ function getTaskResult (id) {
 
 
 function showAlertError(content) {
+    $('#handle-upload').addClass('active');
+    $('#task-process').removeClass('active');
+    $('.converter-footer').removeClass('disabled');
+    
     $('#toast-content').html('<b>Error: </b>' + content);
     const toastLive = document.getElementById('liveToast');
     const toast = new bootstrap.Toast(toastLive);
     toast.show();
-
-    // alert(content);
-    $('#handle-upload').addClass('active');
-    $('#task-process').removeClass('active');
-    $('.converter-footer').removeClass('disabled');
 }
 
 function showResult(data_result) {
@@ -167,8 +166,9 @@ function showResult(data_result) {
     if($('.settings')){
         $('.settings').html('<div class="adload"><img src="https://place-hold.it/300x500?text=ADS" alt="" width="100%"></div>');
         $('.btn-settings').addClass('disabled');
-    } else {
-        console.log('khong ton tai');
+        if ($(".settings").hasClass("show")) {
+            $('.settings').removeClass('show');
+        }
     }
 }
 
