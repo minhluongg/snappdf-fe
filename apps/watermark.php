@@ -127,7 +127,8 @@ include '../inc/products.php';
                             </div>
                         </div>
                     </div>
-                    <div class="setting-box mt-3 p-c add-number">
+                    <div class="setting-box mt-3 p-c border-none add-number">
+                        
                         <div class="position">
                             <div class="setting-title">Position</div>
                             <div class="page-radio">
@@ -175,6 +176,17 @@ include '../inc/products.php';
                             </select>
                         </div>
                         
+                    </div>
+                    <div class="setting-box p-c">
+                            <div class="setting-title">Opacity</div>
+                            <div class="opacity-setting">
+                                <input type="range" class="form-range" id="customOpacity" name="opacity" value="60" min="0" max="100" onchange="rangeSlide(this.value)" onmousemove="rangeSlide(this.value)">
+                                <div class="input-group">
+                                    <input type="number" name="opacity" id="opacity-input" pattern="\d*" inputmode="numeric" class="form-control opacity-input" placeholder="1" value="60" min="1">
+                                    <span class="input-group-text">%</span>
+                                </div>
+                                
+                            </div>
                     </div>
                     <div class="setting-box mt-3 p-c">
                         <div class="setting-title">First number</div>
@@ -294,6 +306,16 @@ function update_imgwatermark_status(id, data) {
 
     }
 }
+
+function rangeSlide(value) {
+    $('#opacity-input').val(value);
+}
+
+$('#opacity-input').on('input', function() {
+    var opacityVal = $('#opacity-input').val();
+    $('#customOpacity').val(opacityVal);
+});
+
 
 function removeItem(id) {
     $("#" + id).remove();

@@ -92,7 +92,7 @@ $subDomain = array_shift((explode('.', $_SERVER['HTTP_HOST'])));
               <a class="nav-link nav-langs dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?=$lang['languages']?></a>
               <ul class="dropdown-menu nav-lang">
               <?php foreach ($listLanguage as $key => $value) { ?>
-                <li><a class="dropdown-item" href="<?=$isHomeUrl?>/<?= $key ?><?= isset($slug) ? '/' . $slug : '' ?>"><?= $value['name'] ?></a></li>
+                <li><a class="dropdown-item" href="<?=$isHomeUrl?><?= $key ?><?= isset($slug) ? '/' . $slug : '' ?>"><?= $value['name'] ?></a></li>
               <?php } ?>
               </ul>
             </div>

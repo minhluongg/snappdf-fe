@@ -5,10 +5,10 @@ $merge['desc'] = "Rotate PDF online for free! With SnapPDF this safe and easy on
 $merge['h1'] = "Rotate PDF";
 $merge['h2'] = "Rotate PDF in Seconds";
 
-$merge['how_title'] = "How to Convert Files to and from PDF Free";
-$merge['how'] = "Select the Word, Excel, PowerPoint, PDF or other file you wish to convert.";
-$merge['how2'] = "Our free PDF creator will convert your document to PDF or from PDF in seconds.";
-$merge['how3'] = "Your new document will be ready to download immediately.";
+$merge['how_title'] = "How to rotate a PDF file at SnapPDF";
+$merge['how'] = "Select the PDF with the wrong orientation that you want to rotate according to your wishes.";
+$merge['how2'] = "Here you can select each page to rotate as you like, or choose to rotate each page in the direction you want. Our free PDF rotater will handle it in seconds.";
+$merge['how3'] = "Your new document after Rotate PDF is ready for immediate download.";
 
 $merge['why-choose_title'] = "Why choose Rotate PDF by SnapPDF?";
 $merge['whyChoose_1'] = "Quickly rotate PDF online";

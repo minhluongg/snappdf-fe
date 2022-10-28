@@ -319,8 +319,12 @@ body.d-scroll {
     color: #D71919;
     margin-top: 6px;
 }
+.rotate-setting {
+    display: flex;
+    gap: 8px;
+}
 .btn {
-    .btn-rotate {
+    &.btn-rotate {
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -330,7 +334,21 @@ body.d-scroll {
         border-radius: 4px;
     }
 }
-
+.opacity-setting {
+    display: grid;
+    grid-template-columns: auto 86px;
+    align-items: center;
+    gap: 16px;
+    .input-group-text {
+        background: unset;
+        padding: 0;
+        padding-right: .75rem;
+    }
+    .opacity-input {
+        padding-right: 0;
+        border-right: 0;
+    }
+}
 @media (min-width: 992px) {
     .settings {
         &.settings-show {
