@@ -58,6 +58,20 @@ function ui_show_preview(id, file, fileType) {
         $('#convert-wrapper').removeClass('disabled');
         $('#handle-upload').addClass('active');
         $('body').addClass('d-scroll');
+    } else if ((file.type === "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" || file.type === "application/vnd.ms-excel") && (fileType === 'excel' || fileType === '1')) {
+        $('#pdfItems').append('<div class="pdf-item" id="' + id + '" data-filename="' + filename + '"><div class="file-info uploading"><div class="preview-icon preview-icon--excel"></div><div class="pdf-filename">' + file.name + '</div><div class="pdf-file-size">' + formatBytes(file.size) + '</div></div><div class="progress-bar"></div><div class="item-del" onclick="removeItem(\'' + id + '\')"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.3268 6.00028L11.0377 2.28935C11.2139 2.11354 11.3129 1.87496 11.3131 1.62611C11.3134 1.37726 11.2147 1.13851 11.0389 0.962393C10.8631 0.786273 10.6245 0.687206 10.3757 0.686986C10.1268 0.686766 9.88807 0.785412 9.71195 0.961221L6.00102 4.67216L2.29008 0.961221C2.11396 0.785101 1.87509 0.686157 1.62602 0.686157C1.37694 0.686157 1.13807 0.785101 0.961953 0.961221C0.785833 1.13734 0.68689 1.37621 0.68689 1.62528C0.68689 1.87436 0.785833 2.11323 0.961953 2.28935L4.67289 6.00028L0.961953 9.71122C0.785833 9.88734 0.68689 10.1262 0.68689 10.3753C0.68689 10.6244 0.785833 10.8632 0.961953 11.0393C1.13807 11.2155 1.37694 11.3144 1.62602 11.3144C1.87509 11.3144 2.11396 11.2155 2.29008 11.0393L6.00102 7.32841L9.71195 11.0393C9.88807 11.2155 10.1269 11.3144 10.376 11.3144C10.6251 11.3144 10.864 11.2155 11.0401 11.0393C11.2162 10.8632 11.3151 10.6244 11.3151 10.3753C11.3151 10.1262 11.2162 9.88734 11.0401 9.71122L7.3268 6.00028Z" fill="#5C5D6B"></path></svg></div></div>');
+        $('#upload').addClass('disabled');
+        $('#converter').addClass('d-block');
+        $('#convert-wrapper').removeClass('disabled');
+        $('#handle-upload').addClass('active');
+        $('body').addClass('d-scroll');
+    } else if ((file.type === "application/vnd.openxmlformats-officedocument.presentationml.presentation" || file.type === "application/x-mspowerpoint" || file.type === "application/mspowerpoint" || file.type === "application/powerpoint" || file.type === "application/vnd.ms-powerpoint") && (fileType === 'ppt' || fileType === '1')) {
+        $('#pdfItems').append('<div class="pdf-item" id="' + id + '" data-filename="' + filename + '"><div class="file-info uploading"><div class="preview-icon preview-icon--ppt"></div><div class="pdf-filename">' + file.name + '</div><div class="pdf-file-size">' + formatBytes(file.size) + '</div></div><div class="progress-bar"></div><div class="item-del" onclick="removeItem(\'' + id + '\')"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.3268 6.00028L11.0377 2.28935C11.2139 2.11354 11.3129 1.87496 11.3131 1.62611C11.3134 1.37726 11.2147 1.13851 11.0389 0.962393C10.8631 0.786273 10.6245 0.687206 10.3757 0.686986C10.1268 0.686766 9.88807 0.785412 9.71195 0.961221L6.00102 4.67216L2.29008 0.961221C2.11396 0.785101 1.87509 0.686157 1.62602 0.686157C1.37694 0.686157 1.13807 0.785101 0.961953 0.961221C0.785833 1.13734 0.68689 1.37621 0.68689 1.62528C0.68689 1.87436 0.785833 2.11323 0.961953 2.28935L4.67289 6.00028L0.961953 9.71122C0.785833 9.88734 0.68689 10.1262 0.68689 10.3753C0.68689 10.6244 0.785833 10.8632 0.961953 11.0393C1.13807 11.2155 1.37694 11.3144 1.62602 11.3144C1.87509 11.3144 2.11396 11.2155 2.29008 11.0393L6.00102 7.32841L9.71195 11.0393C9.88807 11.2155 10.1269 11.3144 10.376 11.3144C10.6251 11.3144 10.864 11.2155 11.0401 11.0393C11.2162 10.8632 11.3151 10.6244 11.3151 10.3753C11.3151 10.1262 11.2162 9.88734 11.0401 9.71122L7.3268 6.00028Z" fill="#5C5D6B"></path></svg></div></div>');
+        $('#upload').addClass('disabled');
+        $('#converter').addClass('d-block');
+        $('#convert-wrapper').removeClass('disabled');
+        $('#handle-upload').addClass('active');
+        $('body').addClass('d-scroll');
     } else {
         alert('Unsupported format');
     }
@@ -98,7 +112,7 @@ function getItems() {
     return items;
 }
 
-function getTaskId(datasend) {
+function getTaskId(datasend, timdeDelay = '') {
     $.ajax({
 		url: "/tasks.php",
 		method: "POST",
@@ -115,14 +129,18 @@ function getTaskId(datasend) {
 }
 
 
-function getTaskResult (id) {
+function getTaskResult (id, timdeDelay = '') {
     $.ajax({
 		url: "/tasks.php?id=" + id,
 		method: "get",
 		success: function(response) {
             obj = jQuery.parseJSON(response);
             if (obj.task_status === "PENDING" || obj.task_status === "STARTED") {
-                setTimeout(function() {getTaskResult (id)}, 200);
+                if (timdeDelay != '') {
+                    setTimeout(function() {getTaskResult (id)}, 2000);
+                } else {
+                    setTimeout(function() {getTaskResult (id)}, 1000);
+                }
             } else if (obj.task_status === "SUCCESS") {
                 var dataResult = obj.task_result.data;
                 showResult(obj.task_result.data);
@@ -161,6 +179,10 @@ function showResult(data_result) {
         $('#download-icon').html('<div class="preview-icon preview-icon--word"></div>');
     } else if (data_result.output_file === 'zip') {
         $('#download-icon').html('<div class="preview-icon preview-icon--zip"></div>');
+    } else if (data_result.output_file === 'xlsx') {
+        $('#download-icon').html('<div class="preview-icon preview-icon--excel"></div>');
+    } else if (data_result.output_file === 'pptx') {
+        $('#download-icon').html('<div class="preview-icon preview-icon--ppt"></div>');
     }
     $("#dlFileSize").text(formatBytes(data_result.file_size));
     if($('.settings')){

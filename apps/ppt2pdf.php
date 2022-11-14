@@ -3,8 +3,8 @@
  * Config
  */
 $multiLanguage = true;
-$slug = '/word-to-pdf';
-$privateLanguage = 'word2pdf/';
+$slug = '/powerpoint-to-pdf';
+$privateLanguage = 'powerpoint2pdf/';
 
 include '../inc/config.php';
 
@@ -29,7 +29,7 @@ include '../inc/header.php';
             <div class="upload-box" id="upload-box">
                 <div id="drop-area" class="drop-area">
                     <label for="file" class="label-upload"><svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19.5 11H13.5V5C13.5 4.73478 13.3946 4.48043 13.2071 4.29289C13.0196 4.10536 12.7652 4 12.5 4C12.2348 4 11.9804 4.10536 11.7929 4.29289C11.6054 4.48043 11.5 4.73478 11.5 5V11H5.5C5.23478 11 4.98043 11.1054 4.79289 11.2929C4.60536 11.4804 4.5 11.7348 4.5 12C4.5 12.2652 4.60536 12.5196 4.79289 12.7071C4.98043 12.8946 5.23478 13 5.5 13H11.5V19C11.5 19.2652 11.6054 19.5196 11.7929 19.7071C11.9804 19.8946 12.2348 20 12.5 20C12.7652 20 13.0196 19.8946 13.2071 19.7071C13.3946 19.5196 13.5 19.2652 13.5 19V13H19.5C19.7652 13 20.0196 12.8946 20.2071 12.7071C20.3946 12.5196 20.5 12.2652 20.5 12C20.5 11.7348 20.3946 11.4804 20.2071 11.2929C20.0196 11.1054 19.7652 11 19.5 11Z" fill="white"/></svg>Upload</label>
-                    <input type="file" accept=".doc,.docx" id="file">
+                    <input type="file" accept=".ppt,.pptx,.pptm" id="file">
                 </div>
             </div>
 
@@ -118,11 +118,12 @@ var pdfs = [];
 
 $("#drop-area").dmUploader({
     url: '/upload.php',
+    extFilter: ['pptx', 'pptm','ppt'],
     headers: {
     'Access-Control-Allow-Origin': "*"
     },
     onNewFile: function(id, file){
-        ui_show_preview(id, file, 'word');
+        ui_show_preview(id, file, 'ppt');
     },
     onUploadProgress: function(id, percent) {
         // Updating file progress
@@ -160,7 +161,7 @@ function handleConvert() {
     ui_converting();
     var items = getItems();
     var dataSend = {
-			task: 'word2pdf',
+			task: 'powerpoint2pdf',
             files: items
 		};
     getTaskId(dataSend);

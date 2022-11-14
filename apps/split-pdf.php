@@ -14,7 +14,75 @@ $isCanonical = $isHomeUrl . $slug;
 
 include '../inc/header.php';
 ?>
-<link href="/assets/css/app.css?v=1.62" rel="stylesheet">
+<link href="/assets/css/app.css?v=1.65" rel="stylesheet">
+<style>
+    .pdf-items {
+        grid-template-columns: 1fr 24px 1fr 24px;
+    }
+    @media (min-width: 992px) {
+        .pdf-items {
+            grid-template-columns: 1fr 24px 1fr 24px 1fr 24px 1fr 24px;
+        }
+    }
+
+    .btn.pdf-cut {
+        padding: 0;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    i.icon.icon-line {
+        background: url("data:image/svg+xml,%0A%3Csvg width='2' height='162' viewBox='0 0 2 162' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 0L1.00001 162' stroke='%23858487' stroke-width='2' stroke-dasharray='4 4'/%3E%3C/svg%3E%0A") center no-repeat;
+        width: 20px;
+        height: 162px;
+        border: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .pdf-cut.is-active .icon.icon-line {
+        background-image: url("data:image/svg+xml,%0A%3Csvg width='2' height='162' viewBox='0 0 2 162' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 0L0.999993 162' stroke='%236D18DC' stroke-width='2'/%3E%3C/svg%3E%0A");
+        
+    }
+
+    .icon.icon-line:hover {
+        background-image: url("data:image/svg+xml,%3Csvg width='2' height='162' viewBox='0 0 2 162' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 0L1.00001 162' stroke='%236D18DC' stroke-width='2' stroke-dasharray='4 4'/%3E%3C/svg%3E")!important;
+    }
+
+    .icon.icon-line svg {
+        display: none;
+    }
+
+    .icon.icon-line svg {
+        display: none;
+    }
+    .pdf-cut.is-active .icon.icon-line svg {
+        display: block;
+    }
+
+    .icon.icon-line:hover svg {
+        display: block;
+    }
+
+    .icon.icon-line:hover rect {
+        fill:#f6f6f6;
+    }
+
+    .icon.icon-line:hover path {
+        stroke: #6D18DC;
+    }
+
+.fixedranges-box {
+    display: none;
+}
+.extractpages-box {
+    display: none;
+}
+</style>
 <div class="main-cover">
     <div class="container">
         <div class="upload" id="upload">
@@ -100,8 +168,8 @@ include '../inc/products.php';
                     <div class="radio-toggle mt-3 p-c border-none">
                         <div class="row">
                             <div class="col-6">
-                                <input class="hide-input" type="radio" name="mode" value="pages" id="modePages" checked="checked">
-                                <label for="modePages">Split by range</label>
+                                <input class="hide-input" type="radio" name="mode" value="splitbyrange" id="modeRanges" checked="checked">
+                                <label for="modeRanges">Split by range</label>
                             </div>
                             <div class="col-6">
                                 <input class="hide-input" type="radio" name="mode" value="extract" id="modeExtract">
@@ -109,18 +177,58 @@ include '../inc/products.php';
                             </div>
                         </div>
                     </div>
-                    <div class="setting-box mt-3 p-c border-none">
-                        <div class="setting-title">Pages to delete</div>
-                            <div class="input-group has-validation">
-                                <input id="pageRange" type="text" name="page_range" class="form-control" placeholder="Example: 2, 3-7, 10-end" min="1">
-                                <div class="invalid-feedback">
-                                    Please enter a number.
+                    <!-- Split by range -->
+                    <div class="splitrange-box" id="splitrange-box">
+                        <div class="setting-box mt-3 p-c settings-split">
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="split-range" id="customRanges" value="custom_range" checked>
+                                <label class="form-check-label" for="customRanges">Custom ranges</label>
+                                <div class="splitafterpage-box" id="splitafterpage-box">
+                                    <div class="radiosl-title mt-3">Split after page</div>
+                                    <div class="input-group has-validation mt-2">
+                                        <input id="splitAfterPage" type="text" name="split-afterpage" class="form-control" placeholder="Ex: 1, 3, 8" min="1">
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+
                                 </div>
                             </div>
-                            <div class="input-about">You can enter multiple ranges separated by a comma.</div>
-                        <input id="page_count" type="hidden" name="page_count" class="form-control" value="" min="1">
-                        <input id="page_range" type="hidden" name="page_range" class="form-control" value="">
-                        <div class="input-deletepage text-muted mt-3"><b>Delete page:</b> <span id="listsDelete"></span></div>
+
+                            <div class="form-check mt-4">
+                                <input class="form-check-input" type="radio" name="split-range" id="fixedRanges" value="fixedranges">
+                                <label class="form-check-label" for="fixedRanges">Fixed ranges</label>
+                                <div class="fixedranges-box" id="fixedranges-box">
+                                    <div class="radiosl-title mt-3">Split in page ranges of</div>
+                                    <div class="input-group has-validation mt-2">
+                                        <input id="inputFixedranges" type="number" name="input-Fixedranges" class="form-control" placeholder="Example: 2" min="1">
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="setting-box mt-3 p-c border-none info-export">
+                            <div class="alert alert-primary d-flex" role="alert">
+                            <div class="alert-svg"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 2.1875C5.69219 2.1875 2.1875 5.69219 2.1875 10C2.1875 14.3078 5.69219 17.8125 10 17.8125C14.3078 17.8125 17.8125 14.3078 17.8125 10C17.8125 5.69219 14.3078 2.1875 10 2.1875ZM10 5.39062C10.2009 5.39062 10.3972 5.45019 10.5643 5.56179C10.7313 5.67339 10.8614 5.83201 10.9383 6.01759C11.0152 6.20317 11.0353 6.40738 10.9961 6.60439C10.9569 6.8014 10.8602 6.98237 10.7182 7.12441C10.5761 7.26644 10.3952 7.36317 10.1981 7.40236C10.0011 7.44155 9.79692 7.42144 9.61134 7.34457C9.42576 7.26769 9.26714 7.13752 9.15554 6.9705C9.04394 6.80348 8.98438 6.60712 8.98438 6.40625C8.98438 6.13689 9.09138 5.87856 9.28184 5.68809C9.47231 5.49763 9.73064 5.39062 10 5.39062ZM11.875 14.2188H8.4375C8.27174 14.2188 8.11277 14.1529 7.99556 14.0357C7.87835 13.9185 7.8125 13.7595 7.8125 13.5938C7.8125 13.428 7.87835 13.269 7.99556 13.1518C8.11277 13.0346 8.27174 12.9688 8.4375 12.9688H9.53125V9.53125H8.90625C8.74049 9.53125 8.58152 9.4654 8.46431 9.34819C8.3471 9.23098 8.28125 9.07201 8.28125 8.90625C8.28125 8.74049 8.3471 8.58152 8.46431 8.46431C8.58152 8.3471 8.74049 8.28125 8.90625 8.28125H10.1562C10.322 8.28125 10.481 8.3471 10.5982 8.46431C10.7154 8.58152 10.7812 8.74049 10.7812 8.90625V12.9688H11.875C12.0408 12.9688 12.1997 13.0346 12.3169 13.1518C12.4342 13.269 12.5 13.428 12.5 13.5938C12.5 13.7595 12.4342 13.9185 12.3169 14.0357C12.1997 14.1529 12.0408 14.2188 11.875 14.2188Z" fill="#0042A5"/></svg></div>
+                            <div><span id="numberPDFs">0</span> PDF will be created.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Extract pages  -->
+                    <div class="extractpages-box" id="extractpages-box">
+                        <div class="setting-box mt-3 p-c settings-split">
+                            <div class="setting-title mt-3">Select pages to extract</div>
+                            <div class="input-group has-validation mt-2">
+                                <input id="inputExtract" type="text" name="inputExtract" class="form-control" placeholder="Example: 2, 3-7, 10-end">
+                                <div class="invalid-feedback"></div>
+                            </div>
+                        </div>
+                        <div class="setting-box mt-3 p-c border-none info-export">
+                            <div class="alert alert-primary d-flex" role="alert">
+                            <div class="alert-svg"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 2.1875C5.69219 2.1875 2.1875 5.69219 2.1875 10C2.1875 14.3078 5.69219 17.8125 10 17.8125C14.3078 17.8125 17.8125 14.3078 17.8125 10C17.8125 5.69219 14.3078 2.1875 10 2.1875ZM10 5.39062C10.2009 5.39062 10.3972 5.45019 10.5643 5.56179C10.7313 5.67339 10.8614 5.83201 10.9383 6.01759C11.0152 6.20317 11.0353 6.40738 10.9961 6.60439C10.9569 6.8014 10.8602 6.98237 10.7182 7.12441C10.5761 7.26644 10.3952 7.36317 10.1981 7.40236C10.0011 7.44155 9.79692 7.42144 9.61134 7.34457C9.42576 7.26769 9.26714 7.13752 9.15554 6.9705C9.04394 6.80348 8.98438 6.60712 8.98438 6.40625C8.98438 6.13689 9.09138 5.87856 9.28184 5.68809C9.47231 5.49763 9.73064 5.39062 10 5.39062ZM11.875 14.2188H8.4375C8.27174 14.2188 8.11277 14.1529 7.99556 14.0357C7.87835 13.9185 7.8125 13.7595 7.8125 13.5938C7.8125 13.428 7.87835 13.269 7.99556 13.1518C8.11277 13.0346 8.27174 12.9688 8.4375 12.9688H9.53125V9.53125H8.90625C8.74049 9.53125 8.58152 9.4654 8.46431 9.34819C8.3471 9.23098 8.28125 9.07201 8.28125 8.90625C8.28125 8.74049 8.3471 8.58152 8.46431 8.46431C8.58152 8.3471 8.74049 8.28125 8.90625 8.28125H10.1562C10.322 8.28125 10.481 8.3471 10.5982 8.46431C10.7154 8.58152 10.7812 8.74049 10.7812 8.90625V12.9688H11.875C12.0408 12.9688 12.1997 13.0346 12.3169 13.1518C12.4342 13.269 12.5 13.428 12.5 13.5938C12.5 13.7595 12.4342 13.9185 12.3169 14.0357C12.1997 14.1529 12.0408 14.2188 11.875 14.2188Z" fill="#0042A5"/></svg></div>
+                            <div>All selected pages will be merged in one PDF file</div>
+                            </div>
+                        </div>
                     </div>
                     
                 </div>
@@ -139,11 +247,9 @@ include '../inc/products.php';
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
-<script src="/assets/js/all.js?v=1.22"></script>
+<script src="/assets/js/all.js?v=1.26"></script>
 <script src="//mozilla.github.io/pdf.js/build/pdf.js"></script>
 <script>
-Sortable.create(pdfItems, { /* options */ });
 var pdfjsLib = window['pdfjs-dist/build/pdf'];
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://mozilla.github.io/pdf.js/build/pdf.worker.js';
@@ -194,7 +300,7 @@ function handlePages(page)
     //This gives us the page's dimensions at full scale
     var viewport = page.getViewport( {scale: .5} );
     numPage = page['_pageIndex'] + 1;
-    $('#pdfItems').append('<div id="page-num' + numPage + '" data-id="' + numPage + '" class="pdf-item"><div class="file-info"><div class="pdf-file-size">' + numPage + '</div></div></div>');
+    $('#pdfItems').append('<div id="page-num' + numPage + '" data-id="' + numPage + '" class="pdf-item"><div class="file-info"><div class="pdf-file-size">' + numPage + '</div></div></div>' + ((numPage != numPages) ? '<button id="scissors-' + numPage + '" onclick="handleScissors(' + numPage + ')" class="btn pdf-cut" data-id="' + numPage + '"><i class="icon icon-line"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="12" fill="#6D18DC"/><path d="M14.2937 14.138C14.4675 13.9642 14.6738 13.8263 14.9009 13.7323C15.128 13.6382 15.3713 13.5898 15.6171 13.5898C15.8628 13.5898 16.1062 13.6382 16.3333 13.7323C16.5603 13.8263 16.7666 13.9642 16.9404 14.138C17.1142 14.3117 17.2521 14.518 17.3461 14.7451C17.4402 14.9722 17.4886 15.2155 17.4886 15.4613C17.4886 15.7071 17.4402 15.9504 17.3461 16.1775C17.2521 16.4045 17.1142 16.6108 16.9404 16.7846C16.5894 17.1356 16.1134 17.3328 15.6171 17.3328C15.1207 17.3328 14.6447 17.1356 14.2937 16.7846C13.9428 16.4337 13.7456 15.9576 13.7456 15.4613C13.7456 14.9649 13.9428 14.4889 14.2937 14.138" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.06004 14.138C7.23319 13.9614 7.43963 13.8208 7.66742 13.7245C7.8952 13.6282 8.13983 13.578 8.38714 13.5768C8.63446 13.5756 8.87956 13.6234 9.10827 13.7175C9.33699 13.8116 9.54478 13.9501 9.71964 14.125C9.89449 14.2999 10.0329 14.5078 10.127 14.7365C10.221 14.9652 10.2688 15.2103 10.2675 15.4577C10.2663 15.705 10.216 15.9496 10.1196 16.1774C10.0232 16.4051 9.88268 16.6115 9.70604 16.7846C9.35507 17.1356 8.87905 17.3328 8.38271 17.3328C7.88636 17.3328 7.41034 17.1356 7.05937 16.7846C6.7084 16.4337 6.51123 15.9576 6.51123 15.4613C6.51123 14.9649 6.7084 14.4889 7.05937 14.138" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.2397 6.66608L10.0063 16.3994" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.76025 6.66608L13.9936 16.3994" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></i></button>' : ''));
     //We'll create a canvas for each page to draw it on
     var canvas = document.createElement( "canvas" );
     canvas.className = 'pdf-page-canvas';
@@ -234,6 +340,34 @@ function handlePrint(file) {
 	}
 }
 
+function handleScissors(id) {
+    $('#scissors-' + id).toggleClass('is-active');
+    inputAfterPage();
+}
+function inputAfterPage() {
+    if ($('.pdf-cut.is-active').length != 0) {
+        var stringCustom = '';
+        $(".btn.pdf-cut").each(function(){
+            if ($(this).hasClass("is-active")) {
+                stringCustom += $(this).attr("data-id") + ', ';
+            }
+        });
+        $('#splitrange-box').show();
+        $('#extractpages-box').hide();
+        $("[name=mode]").val(["splitbyrange"]);
+        $("[name=split-range]").val(["custom_range"]);
+        $('#splitafterpage-box').show();
+        $('#fixedranges-box').hide();
+        var result = stringCustom.substring(0, stringCustom.length - 2);
+        $('input[name=split-afterpage]').val(result);
+
+    } else {
+        $('input[name=split-afterpage]').val('');
+    }
+
+    showNumberPDFs();
+
+} 
 
 function showPreview(id, file) {
     $('#upload').addClass('disabled');
@@ -256,10 +390,30 @@ function removeItem(id) {
     }
 }
 
+$('input[name=split-range]').change(function() {
+  if ($(this).val() === 'fixedranges') {
+    $('#splitafterpage-box').hide();
+    $('#fixedranges-box').show();
 
+  } else {
+    $('#splitafterpage-box').show();
+    $('#fixedranges-box').hide();
+  }
+});
 
-$('#pageRange').on('input', function() {
-  hiddenErrorInput('pageRange');
+$('input[name=mode]').change(function() {
+  if ($(this).val() === 'extract') {
+    $('#splitrange-box').hide();
+    $('#extractpages-box').show();
+
+  } else {
+    $('#splitrange-box').show();
+    $('#extractpages-box').hide();
+  }
+});
+
+$('#splitAfterPage').on('input', function() {
+  hiddenErrorInput('splitAfterPage');
   var rangeValue = $(this).val();
   var rangeArr = rangeValue.split(",");
   var rangeLength = rangeArr.length;
@@ -268,30 +422,11 @@ $('#pageRange').on('input', function() {
     var oneStrPage = rangeArr[i].trim();
    
     if (isNaN(Number(oneStrPage))) {
-        if (oneStrPage.indexOf("-") != -1) {
-            console.log('yes');
-            var myRange = oneStrPage.split("-");
-            var first_Range = myRange[0].trim();
-            var last_Range = myRange[myRange.length - 1].trim();
-            
-            if (!isNaN(Number(first_Range)) && !isNaN(Number(last_Range))) {
-                if (numPages < last_Range) {
-                    last_Range = numPages;
-                    // showErrorInput('pageRange', 'Your PDF has only <b>' + numPages + '</b> pages, you must not enter a number greater than ' + numPages);
-                }
-                var rangeSplit  = range(Number(myRange[0]), Number(last_Range));
-                var rangeSplitLength = rangeSplit.length;
-                for (var j =0; j < rangeSplitLength; j++) {
-                    allPage.push(rangeSplit[j]);
-                }
-            }
-        } else {
-            showErrorInput('pageRange', 'The data you entered is incorrect, must be digits');
-        }
+        showErrorInput('splitAfterPage', 'The data you entered is incorrect, must be digits');
     } else {
         if (oneStrPage != '') {
             if (numPages < Number(oneStrPage)) {
-                showErrorInput('pageRange', 'Your PDF has only <b>' + numPages + '</b> pages, you must not enter a number greater than ' + numPages);
+                showErrorInput('splitAfterPage', 'Your PDF has only <b>' + numPages + '</b> pages, you must not enter a number greater than ' + numPages);
             } else {
                 allPage.push(Number(oneStrPage));
             }
@@ -301,45 +436,97 @@ $('#pageRange').on('input', function() {
   allPage.sort(function(a, b) {
     return a - b;
   });
-  allPageDel = allPage.filter(onlyUnique);
-
-  var stringPageDel = allPageDel.join(', ');
-    $('#listsDelete').text(stringPageDel);
-    $('#page_range').val(stringPageDel);
-
+  handleShowCustom(allPage.filter(onlyUnique));
 });
 
+$('#inputFixedranges').on('input', function() {
+    var fixedValue = $(this).val();
+    if (isNaN(Number(fixedValue))) {
+        showErrorInput('inputFixedranges', 'The data you entered is incorrect, must be digits');
+    } else {
+        if (fixedValue != '') {
+            if (numPages < Number(fixedValue)) {
+                showErrorInput('inputFixedranges', 'Your PDF has only <b>' + numPages + '</b> pages, you must not enter a number greater than ' + numPages);
+            } else {
+                handleShowFixed(fixedValue);
+            }
+        }
+    }
+});
 
+function handleShowCustom(arr) {
+    $('.btn.pdf-cut').removeClass('is-active');
+    var lengthArr = arr.length;
+    for (let i = 0; i < lengthArr; i++) {
+        $('#scissors-' + arr[i]).addClass('is-active');
+    }
+    showNumberPDFs();
+}
+
+function handleShowFixed(num) {
+    $('.btn.pdf-cut').removeClass('is-active');
+
+    num = parseInt(num);
+    for (let i = 0; i < numPages; i++) {
+        if (i % num == 0){
+            $('#scissors-' + i).addClass('is-active');
+        }
+    }
+    showNumberPDFs();
+}
+
+function showNumberPDFs() {
+    // pdf-cut is-active
+    var numberOfPDFs = $('.pdf-cut.is-active').length + 1;
+    $('#numberPDFs').text(numberOfPDFs);
+}
 
 function handleConvert() {
     ui_converting();
     $('.settings').removeClass('show');
-	countPDF = $(".pdf-item").length;
 
-    var isPageCount = $('input[name=page_count]').val();
-    var isPageRange = $('input[name=page_range]').val();
     var isTaskId = pdfs[0]['id_be'];
-    var isTaskId = pdfs[0]['id_be'];
-    // if () {
 
-    // }
-    console.log(isPageRange);
-    if (allPageDel != [] && isPageCount != '' && pdfs[0]['id_be']) {
-        var items = getItems();
-
-        var dataSend = {
-                "task": 'remove_page',
-                "files": [{"id": pdfs[0]['id_be'], "name":fileName}],
-                "config": {
-                    "page_range": allPageDel,
-                    "page_count": Number(isPageCount)
+    if ($('input[name="mode"]:checked').val() === 'extract') {
+        var inputExtract = $('#inputExtract').val();
+        var extractArr = inputExtract.split(",");
+        var config = {
+                    "split_method": 'extract',
+                    "extract_pages": extractArr
                 }
-            };
-        getTaskId(dataSend);
-
     } else {
-        showAlertError("Please fill in the page you want to delete");
+        var splitMethod = 'range';
+        var rangesName = $('input[name="split-range"]:checked').val();
+        if (rangesName === 'fixedranges') {
+            var numFixed = $('input[name="input-Fixedranges"]').val();
+
+            if (numFixed === '') {
+                showAlertError('Failure');
+                return showErrorInput('inputFixedranges', 'The data you entered is incorrect, must be digits');
+            } else {
+                var config = {
+                    "split_method": 'range',
+                    "fixed_range": numFixed
+                }
+            }
+        } else {
+            var customRange = $('#splitAfterPage').val();
+            var customRangeArr = customRange.split(",");
+            var config = {
+                    "split_method": 'range',
+                    "custom_range": customRangeArr
+                }
+
+        }
     }
+    console.log(config);
+    var items = getItems();
+    var dataSend = {
+                "task": 'split',
+                "files": [{"id": pdfs[0]['id_be'], "name":fileName}],
+                "config": config
+            };
+    getTaskId(dataSend);
 
 }
 

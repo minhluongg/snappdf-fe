@@ -14,7 +14,7 @@ $isCanonical = $isHomeUrl . $slug;
 
 include '../inc/header.php';
 ?>
-<link href="/assets/css/app.css?v=1.62" rel="stylesheet">
+<link href="/assets/css/app.css?v=1.65" rel="stylesheet">
 
 <div class="main-cover">
     <div class="container mt-3">
@@ -112,7 +112,7 @@ include '../inc/products.php';
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="/assets/js/all.js?v=1.22"></script>
+<script src="/assets/js/all.js?v=1.26"></script>
 <script>
 function formatBytes(a,b=2){if(!+a)return"0 Bytes";const c=0>b?0:b,d=Math.floor(Math.log(a)/Math.log(1024));return`${parseFloat((a/Math.pow(1024,d)).toFixed(c))} ${["Bytes","KB","MB","GB","TB","PB","EB","ZB","YB"][d]}`}
 var pdfs = [];
