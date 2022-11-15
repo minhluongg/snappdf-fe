@@ -11,7 +11,7 @@ $merge['how3'] = "Descargue el PDF convertido a su computadora o dispositivo mó
 
 $merge['why-select_title'] = "¿Por qué elegir SnapPDF para convertir Xcel a PDF?";
 $merge['whyChoose_1'] = "SnapPDF Rápido y fácil";
-$merge['why-choose_desc1'] = "No es necesario registrarse para usar nuestro <b>Excel a PDF</b>. Convierta Excel a PDF sin registrarse. Descargue su archivo en PDF en segundos". ;
+$merge['why-choose_desc1'] = "No es necesario registrarse para usar nuestro <b>Excel a PDF</b>. Convierta Excel a PDF sin registrarse. Descargue su archivo en PDF en segundos" ;
 $merge['whyChoose_2'] = "No es necesario descargar software";
 $merge['why-choose_desc2'] = "El convertidor de Excel a PDF lo ayuda a convertir archivos de Excel a PDF en línea sin descargar ningún software adicional";
 $merge['whyChoose_3'] = "Velocidad de procesamiento rápida";

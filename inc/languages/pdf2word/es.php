@@ -16,13 +16,12 @@ $merge['why-choose_desc1'] = "Su conversión de PDF a Word es casi instantánea 
 $merge['whyChoose_2'] = "Fácil de usar";
 $merge['why-choose_desc2'] = "SnapPDF - Muchos usuarios confían en la herramienta PDF2Word y la aprecian. Fácil de usar por todos es el criterio de nuestro producto. Muy fácil. Los clientes usan bien este software en la primera visita.";
 $merge['whyChoose_3'] = "Editar archivos de Word Online";
-$merge['why-choose_desc3'] = "Después de procesar la conversión de PDF a Word, también proporcionamos una función adicional para editar archivos de Word directamente en el Editor. Puede editarlo nuevamente antes de comenzar a descargar y compartir archivos de Word". ;
+$merge['why-choose_desc3'] = "Después de procesar la conversión de PDF a Word, también proporcionamos una función adicional para editar archivos de Word directamente en el Editor. Puede editarlo nuevamente antes de comenzar a descargar y compartir archivos de Word";
 $merge['whyChoose_4'] = "No es necesario registrarse";
 $merge['why-choose_desc4'] = "Puede obtener un número limitado de aplicaciones gratuitas para usar nuestro convertidor de PDF a Word sin registrarse. Sin embargo, también puede suscribirse y actualizar el plan, para uso ilimitado.";
 $merge['whyChoose_5'] = "Interfaz de usuario amigable";
 $merge['why-choose_desc5'] = "La interfaz de usuario de SnapPDF PDF to Word es muy fácil de usar, hermosa, ¡lo que hace que sea fácil de usar para cualquier persona en nuestro Editor!";
 $merge['whyChoose_6'] = "No hay error de fuente.";
 $merge['why-choose_desc6'] = "Después de convertir archivos PDF a archivos de Word en otras herramientas en línea, notará que la fuente está dañada. Pero en SnapPDF esto no sucede en absoluto. Usamos herramientas de IA para extraer texto de Archivos PDF haciéndolos casi 100% precisos.";
-
 
 $merge['errorFileExtension'] = "Error, no se puede cargar porque el formato de archivo no es compatible, elija el archivo con la extensión:";

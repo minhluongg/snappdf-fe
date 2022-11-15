@@ -2,13 +2,12 @@
 /**
  * Config
  */
-$slug = 'privacy-policy';
 // include 
 include '../inc/config.php';
 
 $isTitle = "Privacy policy";
 $isDesc = '"Privacy policy"';
-$isCanonical = $isHomeUrl . '/' . $slug;
+$isCanonical = $isHomeUrl . '/privacy-policy';
 
 include '../inc/header.php';
 ?>

@@ -12,7 +12,7 @@ $merge['how3'] = "PDF sing wis diowahi wis siyap diundhuh lan dienggo bareng.";
 
 $merge['why-select_title'] = "Napa milih SnapPDF kanggo ngowahi Powerpoint dadi PDF?";
 $merge['whyChoose_1'] = "SnapPDF kanthi Kacepetan Dhuwur";
-$ merge ['why-choose_desc1'] = "Ngonversi PPT menyang PDF nganggo SnapPDF ing sawetara detik. Kita duwe server ing saindenging jagad nalika sampeyan nggunakake, luwih seneng server sing luwih cedhak karo sampeyan. SnapPDF mbantu sampeyan ngirit wektu lan gaweyan. ";
+$merge ['why-choose_desc1'] = "Ngonversi PPT menyang PDF nganggo SnapPDF ing sawetara detik. Kita duwe server ing saindenging jagad nalika sampeyan nggunakake, luwih seneng server sing luwih cedhak karo sampeyan. SnapPDF mbantu sampeyan ngirit wektu lan gaweyan. ";
 $merge['whyChoose_2'] = "SnapPDF gampang banget digunakake";
 $merge['why-choose_desc2'] = "SnapPDF - Konverter PPT menyang PDF sing dipercaya lan dihargai dening akeh pangguna. Apa sampeyan mahasiswa, mahasiswa, utawa wong sing kerja, alat iki gampang digunakake. alat iki .";
 $merge['whyChoose_3'] = "Alat iki aman banget";

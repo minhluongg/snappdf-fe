@@ -1,6 +1,5 @@
 <?php
-
-$ merge['title'] = "PDF sang Excel, PDF sang Excel miễn phí ở mọi nơi - SnapPDF";
+$merge['title'] = "PDF sang Excel, PDF sang Excel miễn phí ở mọi nơi - SnapPDF";
 $merge['desc'] = "Sử dụng SnapPDF PDF to Excel trong vài giây. Ngoài ra, PDF to Excel còn hỗ trợ nén ảnh PNG, JPG, Word, PPT, Excel giúp bạn tiết kiệm thời gian.";
 $merge['h1'] = "Chuyển PDF sang Excel";
 $merge['h2'] = "Chuyển đổi bảng tính PDF sang Excel một cách nhanh chóng với SnapPDF";

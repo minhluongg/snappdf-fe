@@ -20,6 +20,6 @@ $merge['why-choose_desc3'] = "No requerimos ningún software, solo necesita una 
 $merge['whyChoose_4'] = "SnapPDF seguro";
 $merge['why-choose_desc4'] = "Cumplimos con el RGPD, somos transparentes sobre el almacenamiento, la recopilación y el procesamiento de datos personales. Tus documentos estarán seguros con tecnología cifrada TLS, OCR,... El archivo que cargues también será pronto eliminado de nuestros servidores.";
 $merge['whyChoose_5'] = "Usar en cualquier momento, en cualquier lugar";
-$merge['why-choose_desc5'] = "Puede comprimir en cualquier dispositivo, como teléfono móvil, tableta o computadora de escritorio, simplemente vaya a SnapPDF y seleccione la función Excel a PDF para usar". ;
+$merge['why-choose_desc5'] = "Puede comprimir en cualquier dispositivo, como teléfono móvil, tableta o computadora de escritorio, simplemente vaya a SnapPDF y seleccione la función Excel a PDF para usar";
 $merge['whyChoose_6'] = "Tamaño de carga ilimitado";
 $merge['why-choose_desc6'] = "SnapPDF puede manejar hasta 1 GB por archivo. No tendrá que preocuparse de que sus cargas se interrumpan con archivos grandes.";
