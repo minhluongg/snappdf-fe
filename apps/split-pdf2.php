@@ -10,7 +10,7 @@ include '../inc/config.php';
 
 $isTitle = $merge['title'];
 $isDesc = $merge['desc'];
-$isCanonical = $isHomeUrl . $slug;
+$isCanonical = $isHomeUrl . (isset($_GET['lang']) ? '/' . $_GET['lang'] : '')  '/' . $slug;
 
 include '../inc/header.php';
 ?>
