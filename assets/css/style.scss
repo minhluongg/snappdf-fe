@@ -53,6 +53,10 @@ h3 {
   .dropdown-toggle svg {
       margin-right: 8px;
   }
+  .nav-lang.show {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 }
 // Home 
 .home-hero {
@@ -418,6 +422,16 @@ footer {
 .p-c {
   padding-right: calc(var(--bs-gutter-x) * .5);
   padding-left: calc(var(--bs-gutter-x) * .5);
+}
+.btn:first-child:hover, :not(.btn-check)+.btn:hover {
+  background: #4C119A;
+  color: #fff;
+}
+.label-upload:hover {
+  background: #863FE2;
+}
+.label-upload:active, .label-upload:visited {
+  background: #4C119A;
 }
 
 .hide-input {
@@ -980,7 +994,7 @@ to { background-position: 0 0; }
   color: #fff;
   line-height: 28px;
   &.active, &.show, &:first-child:active {
-    color: var(--bs-btn-hover-color);
+    color: #fff;
     background-color: #610cd0;
   }
 }

@@ -38,8 +38,8 @@ $isLinkLang = isset($_GET['lang']) ? '/' . $_GET['lang'] : '';
     <meta property="og:image" content="/assets/img/thumb.jpg">
     <meta property="og:description" content="<?=$isDesc?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <link href="/assets/css/style.css?v=1.61" rel="stylesheet">
-    <link rel="shortcut icon" href="/assets/img/favicon-16x16.png" />
+    <link href="/assets/css/style.css?v=1.63" rel="stylesheet">
+    <link rel="shortcut icon" href="/assets/img/facicon.png" />
     <link rel="apple-touch-icon" sizes="192x192" href="/assets/img/apple-touch-icon.png">
     <meta name="google" content="notranslate" />
   <?php if (isset($multiLanguage) && $multiLanguage === true) {

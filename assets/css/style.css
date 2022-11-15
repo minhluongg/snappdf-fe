@@ -118,6 +118,10 @@ h3 {
 .navbar .dropdown-toggle svg {
   margin-right: 8px;
 }
+.navbar .nav-lang.show {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
 
 .home-hero {
   background: #F1EBF7;
@@ -489,6 +493,19 @@ footer {
 .p-c {
   padding-right: calc(var(--bs-gutter-x) * 0.5);
   padding-left: calc(var(--bs-gutter-x) * 0.5);
+}
+
+.btn:first-child:hover, :not(.btn-check) + .btn:hover {
+  background: #4C119A;
+  color: #fff;
+}
+
+.label-upload:hover {
+  background: #863FE2;
+}
+
+.label-upload:active, .label-upload:visited {
+  background: #4C119A;
 }
 
 .hide-input {
@@ -1048,7 +1065,7 @@ footer {
   line-height: 28px;
 }
 .btn.btn-convert.active, .btn.btn-convert.show, .btn.btn-convert:first-child:active {
-  color: var(--bs-btn-hover-color);
+  color: #fff;
   background-color: #610cd0;
 }
 

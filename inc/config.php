@@ -14,8 +14,12 @@ $languages = array(
         'name' => 'Bahasa Indonesia',
         'flag' => ''
     ),
-    'vn' =>  array(
-        'name' => 'Tiếng Việt',
+    'ms' =>  array(
+        'name' => 'Bahasa Malaysia',
+        'flag' => ''
+    ),
+    'jw' =>  array(
+        'name' => 'Basa Jawa',
         'flag' => ''
     ),
     'es' =>  array(
@@ -30,24 +34,60 @@ $languages = array(
         'name' => 'German',
         'flag' => ''
     ),
+    'hi' =>  array(
+        'name' => 'Hindi',
+        'flag' => ''
+    ),
     'it' => array(
         'name' => 'Italian', 
+        'flag' => ''
+    ),
+    'hu' =>  array(
+        'name' => 'Magyar',
+        'flag' => ''
+    ),
+    'nl' =>  array(
+        'name' => 'Nederlands',
+        'flag' => ''
+    ),
+    'pl' =>  array(
+        'name' => 'Polish',
         'flag' => ''
     ),
     'pt' => array(
         'name' => 'Português', 
         'flag' => ''
     ),
+    'ro' =>  array(
+        'name' => 'Română',
+        'flag' => ''
+    ),
+    'th' => array(
+        'name' => 'Thai', 
+        'flag' => ''
+    ),
+    'vn' =>  array(
+        'name' => 'Tiếng Việt',
+        'flag' => ''
+    ),
     'tr' => array(
         'name' => 'Turkish', 
+        'flag' => ''
+    ),
+    'cs' =>  array(
+        'name' => 'Čeština',
+        'flag' => ''
+    ),
+    'el' =>  array(
+        'name' => 'Ελληνικά',
         'flag' => ''
     ),
     'ru' => array(
         'name' => 'Русский', 
         'flag' => ''
     ),
-    'th' => array(
-        'name' => 'Thai', 
+    'uk' =>  array(
+        'name' => 'украї́нська мо́ва',
         'flag' => ''
     ),
     'ja' => array(
