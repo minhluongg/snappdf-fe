@@ -94,7 +94,7 @@ $isLinkLang = isset($_GET['lang']) ? '/' . $_GET['lang'] : '';
               <a class="nav-link nav-langs dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?=$lang['languages']?></a>
               <ul class="dropdown-menu nav-lang">
               <?php foreach ($languages as $key => $value) { ?>
-                <li><a class="dropdown-item" href="<?=$isHomeUrl . '/' . $key . ($slug != '' ? '/' . $slug : '') ?>"><?= $value['name'] ?></a></li>
+                <li><a class="dropdown-item" href="<?=$isHomeUrl . '/' . ($key != 'en' ? $key : '') . ($slug != '' ? '/' . $slug : '') ?>"><?= $value['name'] ?></a></li>
               <?php } ?>
               </ul>
             </div>
