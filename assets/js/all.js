@@ -12,7 +12,7 @@ function onlyUnique(value, index, self) {
     return self.indexOf(value) === index;
 }
 
-function update_file_status(id, data) {
+function updateFileStatus(id, data) {
     const obj = JSON.parse(data);
     if (!obj.data.id) {
         console.log('Alert error');
@@ -33,13 +33,13 @@ function hiddenErrorInput(elId) {
     $('#' + elId).removeClass('is-invalid');
     $('#' + elId).next().html('');
 }
-function ui_converting() {
+function uiConverting() {
     $('#handle-upload').removeClass('active');
     $('#task-process').addClass('active');
     $('.converter-footer').addClass('disabled');
 }
 
-function ui_show_preview(id, file, fileType) {
+function uiShowPreview(id, file, fileType) {
     
     var filename = file.name.replace(/\.[^/.]+$/, "");
     filename = fixFilename(filename);
@@ -78,7 +78,7 @@ function ui_show_preview(id, file, fileType) {
 }
 
 // UI 
-function ui_update_pdf_progress(id, percent, addclasss, active) {
+function uiUpdatePdfProgress(id, percent, addclasss, active) {
     console.log('id: ' + id + ' - ' + percent);
     color = (typeof color === 'undefined' ? false : color);
     active = (typeof active === 'undefined' ? true : active);

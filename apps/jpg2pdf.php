@@ -3,7 +3,7 @@
  * Config
  */
 $multiLanguage = true;
-$slug = '/jpg-to-pdf';
+$slug = 'jpg-to-pdf';
 $privateLanguage = 'jpg2pdf/';
 
 include '../inc/config.php';
@@ -245,7 +245,7 @@ include '../inc/products.php';
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
-<script src="/assets/js/all.js?v=1.26"></script>
+<script src="/assets/js/all.js?v=1.27"></script>
 <script>
 Sortable.create(pdfItems, {
     handle: '.btn-drag',
@@ -265,16 +265,16 @@ $("#drop-area").dmUploader({
     },
     onUploadProgress: function(id, percent) {
         // Updating file progress
-        ui_update_pdf_progress(id, percent);
+        uiUpdatePdfProgress(id, percent);
     },
     onUploadSuccess: function(id, data) {
         // A file was successfully uploaded
-        update_file_status(id, data);
-        ui_update_pdf_progress(id, 100, 'progress-success', false);
+        updateFileStatus(id, data);
+        uiUpdatePdfProgress(id, 100, 'progress-success', false);
     },
     onUploadError: function(id, xhr, status, message) {
-        // update_file_status(id, 'danger', message);
-        ui_update_pdf_progress(id, 0, 'progress-success', false);
+        // updateFileStatus(id, 'danger', message);
+        uiUpdatePdfProgress(id, 0, 'progress-success', false);
         updateError(id, 0);
     },
     onInit: function() {
@@ -321,7 +321,7 @@ function removeItem(id) {
 }
 
 function handleConvert() {
-    ui_converting();
+    uiConverting();
     $('.settings').removeClass('show');
 
     var isMode = $('#pagesize').find(":selected").val();

@@ -3,7 +3,7 @@
  * Config
  */
 $multiLanguage = true;
-$slug = '/rotate-pdf';
+$slug = 'rotate-pdf';
 $privateLanguage = 'rotate/';
 
 include '../inc/config.php';
@@ -109,7 +109,7 @@ include '../inc/products.php';
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
-<script src="/assets/js/all.js?v=1.26"></script>
+<script src="/assets/js/all.js?v=1.27"></script>
 <script src="//mozilla.github.io/pdf.js/build/pdf.js"></script>
 
 <script>
@@ -129,14 +129,14 @@ $("#drop-area").dmUploader({
       showPreview(id, file);
     },
     onUploadProgress: function(id, percent) {
-        ui_update_pdf_progress(id, percent);
+        uiUpdatePdfProgress(id, percent);
     },
     onUploadSuccess: function(id, data) {
-        update_file_status(id, data);
-        ui_update_pdf_progress(id, 100, 'progress-success', false);
+        updateFileStatus(id, data);
+        uiUpdatePdfProgress(id, 100, 'progress-success', false);
     },
     onUploadError: function(id, xhr, status, message) {
-        ui_update_pdf_progress(id, 0, 'progress-success', false);
+        uiUpdatePdfProgress(id, 0, 'progress-success', false);
         updateError(id, 0);
     },
     onInit: function() {
@@ -265,7 +265,7 @@ function handleConvert() {
     if (degNumber === '0') {
         return showAlertError('Bạn chưa chọn độ xoay, độ xoay hiện tại là 0 vì vậy nó sẽ trả về file gốc');
     }
-    ui_converting();
+    uiConverting();
     $('.settings').removeClass('show');
     var items = getItems();
 

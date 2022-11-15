@@ -3,7 +3,7 @@
  * Config
  */
 $multiLanguage = true;
-$slug = '/pdf-to-excel';
+$slug = 'pdf-to-excel';
 $privateLanguage = 'pdf2excel/';
 
 include '../inc/config.php';
@@ -109,10 +109,9 @@ include '../inc/products.php';
         </div>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="/assets/js/all.js?v=1.26"></script>
+<script src="/assets/js/all.js?v=1.27"></script>
 <script>
 function formatBytes(a,b=2){if(!+a)return"0 Bytes";const c=0>b?0:b,d=Math.floor(Math.log(a)/Math.log(1024));return`${parseFloat((a/Math.pow(1024,d)).toFixed(c))} ${["Bytes","KB","MB","GB","TB","PB","EB","ZB","YB"][d]}`}
 var pdfs = [];
@@ -123,17 +122,17 @@ $("#drop-area").dmUploader({
     'Access-Control-Allow-Origin': "*"
     },
     onNewFile: function(id, file){
-        ui_show_preview(id, file, 'pdf');
+        uiShowPreview(id, file, 'pdf');
     },
     onUploadProgress: function(id, percent) {
-        ui_update_pdf_progress(id, percent);
+        uiUpdatePdfProgress(id, percent);
     },
     onUploadSuccess: function(id, data) {
-        update_file_status(id, data);
-        ui_update_pdf_progress(id, 100, 'progress-success', false);
+        updateFileStatus(id, data);
+        uiUpdatePdfProgress(id, 100, 'progress-success', false);
     },
     onUploadError: function(id, xhr, status, message) {
-        ui_update_pdf_progress(id, 0, 'danger', false);
+        uiUpdatePdfProgress(id, 0, 'danger', false);
         updateError(id, 0);
     },
     onInit: function() {
@@ -174,7 +173,7 @@ function showPreview(id, file) {
 
 
 function handleConvert() {
-    ui_converting();
+    uiConverting();
     var items = getItems();
     var dataSend = {
 			task: 'pdf2excel',

@@ -3,7 +3,7 @@
  * Config
  */
 $multiLanguage = true;
-$slug = '/rotate-pdf';
+$slug = 'rotate-pdf';
 $privateLanguage = 'rotate/';
 
 include '../inc/config.php';
@@ -230,16 +230,16 @@ $("#drop-area").dmUploader({
     },
     onUploadProgress: function(id, percent) {
         // Updating file progress
-        ui_update_pdf_progress(id, percent);
+        uiUpdatePdfProgress(id, percent);
     },
     onUploadSuccess: function(id, data) {
         // A file was successfully uploaded
-        update_file_status(id, data);
-        ui_update_pdf_progress(id, 100, 'progress-success', false);
+        updateFileStatus(id, data);
+        uiUpdatePdfProgress(id, 100, 'progress-success', false);
     },
     onUploadError: function(id, xhr, status, message) {
-        // update_file_status(id, 'danger', message);
-        ui_update_pdf_progress(id, 0, 'progress-success', false);
+        // updateFileStatus(id, 'danger', message);
+        uiUpdatePdfProgress(id, 0, 'progress-success', false);
         updateError(id, 0);
     },
     onInit: function() {
@@ -376,7 +376,7 @@ function update_file_progress(id, percent, addclasss, active) {
 }
 
 function handleConvert() {
-    ui_converting();
+    uiConverting();
     $('.settings').removeClass('show');
 
     var items = getItems();
