@@ -14,7 +14,7 @@ $isCanonical = $isHomeUrl . (isset($_GET['lang']) ? '/' . $_GET['lang'] : '') . 
 
 include '../inc/header.php';
 ?>
-<link href="/assets/css/app.css?v=1.65" rel="stylesheet">
+<link href="/assets/css/app.css?v=1.65<?=time()?>" rel="stylesheet">
 <style>
 .form-range[type=range]{-webkit-appearance:none;height:6px;background:0 0/60% 100% no-repeat #eaeaed;border-radius:5px;background-image:linear-gradient(#252638,#252638)}.form-range[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;position:relative;top:-4px;border-radius:50%;background:#252638;cursor:ew-resize;box-shadow:0 1px 4px rgba(32,52,89,.16),0 4px 16px 2px rgba(32,52,89,.16);transition:background .3s ease-in-out}.form-range[type=range]::-moz-range-thumb{-webkit-appearance:none;height:24px;width:24px;position:relative;top:-4px;border-radius:50%;background:#252638;cursor:ew-resize;box-shadow:0 1px 4px rgba(32,52,89,.16),0 4px 16px 2px rgba(32,52,89,.16);transition:background .3s ease-in-out}.form-range[type=range]::-ms-thumb{-webkit-appearance:none;height:24px;width:24px;position:relative;top:-4px;border-radius:50%;background:#252638;cursor:ew-resize;box-shadow:0 1px 4px rgba(32,52,89,.16),0 4px 16px 2px rgba(32,52,89,.16);transition:background .3s ease-in-out}.form-range[type=range]::-webkit-slider-thumb:hover{background:#252638}.form-range[type=range]::-moz-range-thumb:hover{background:#252638}.form-range[type=range]::-ms-thumb:hover{background:#252638}.form-range[type=range]::-webkit-slider-runnable-track{-webkit-appearance:none;box-shadow:none;border:none;background:0 0}.form-range[type=range]::-moz-range-track{-webkit-appearance:none;box-shadow:none;border:none;background:0 0}.form-range[type=range]::-ms-track{-webkit-appearance:none;box-shadow:none;border:none;background:0 0}
 option.font-times{font-family:"Times New Roman",Times,serif}option.font-courier{font-family:courier,courier new,serif}option.font-helvetica{font-family:Helvetica Neue,Helvetica,Arial,sans-serif}
@@ -214,7 +214,7 @@ include '../inc/products.php';
                         <div class="row">
                             <div class="col-6">
                                 <div class="setting-title mt-3">Start from page</div>
-                                <input type="number" name="start-from" pattern="\d*" inputmode="numeric" class="form-control" placeholder="1" value="1" min="1">
+                                <input type="number" id="start-from" name="start-from" pattern="\d*" inputmode="numeric" class="form-control" placeholder="1" value="1" min="1">
                             </div>
                             <div class="col-6">
                                 <div class="setting-title mt-3">to page</div>
@@ -241,7 +241,7 @@ include '../inc/products.php';
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
 <script src="//mozilla.github.io/pdf.js/build/pdf.js"></script>
-<script src="/assets/js/all.js?v=1.27"></script>
+<script src="/assets/js/all.js?v=1.27<?=time()?>"></script>
 <script>
 var pdfjsLib = window['pdfjs-dist/build/pdf'];
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://mozilla.github.io/pdf.js/build/pdf.worker.js';
@@ -258,11 +258,9 @@ $("#drop-area").dmUploader({
         print_numOfPages(file);
     },
     onUploadProgress: function(id, percent) {
-        // Updating file progress
         uiUpdatePdfProgress(id, percent);
     },
     onUploadSuccess: function(id, data) {
-        // A file was successfully uploaded
         updateFileStatus(id, data);
         uiUpdatePdfProgress(id, 100, 'progress-success', false);
     },
@@ -272,7 +270,6 @@ $("#drop-area").dmUploader({
         updateError(id, 0);
     },
     onInit: function() {
-        console.log('Callback: Plugin initialized');
     },
 });
 
@@ -286,25 +283,16 @@ $("#drop-image").dmUploader({
     'Access-Control-Allow-Origin': "*"
     },
     onNewFile: function(id, file){
-        // showPreviewJPG(id, file);
         showPreviewWatermark(id, file);
     },
     onUploadProgress: function(id, percent) {
-        // Updating file progress
-        // uiUpdatePdfProgress(id, percent);
     },
     onUploadSuccess: function(id, data) {
-        // A file was successfully uploaded
         update_imgwatermark_status(id, data);
-        // uiUpdatePdfProgress(id, 100, 'progress-success', false);
     },
     onUploadError: function(id, xhr, status, message) {
-        // updateFileStatus(id, 'danger', message);
-        // uiUpdatePdfProgress(id, 0, 'progress-success', false);
-        // updateError(id, 0);
     },
     onInit: function() {
-        console.log('Callback: Plugin initialized');
     },
 });
 
@@ -321,9 +309,6 @@ $('#colorPicker').on('input', function(){
     $('.fontstyle-item.select-color').addClass('is-active');
 
 });
-$('#colorPicker').change(function() {
-    $('#watermark-text').css({ color: $('#colorPicker').val() });
-});
 
 function updateError () {
     console.log(0);
@@ -335,6 +320,8 @@ function print_numOfPages(file) {
         var pdfData = new Uint8Array(this.result);
         pdfjsLib.getDocument({data: pdfData}).promise.then(function(pdf) {
             $("#to-page").val(pdf.numPages);
+            $('#start-from').attr('max', pdf.numPages);
+            $('#to-page').attr('max', pdf.numPages);
         });
 			
 		};
@@ -385,7 +372,6 @@ function showPreviewWatermark(id, file) {
         img.attr('src', e.target.result);
         $('#watermark-previewimg').html('<img src="' + e.target.result + '" alt="Photo">');
       }
-      /* ToDo: do something with the img! */
       reader.readAsDataURL(file);
     }
 }

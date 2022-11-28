@@ -14,7 +14,7 @@ $isCanonical = $isHomeUrl . (isset($_GET['lang']) ? '/' . $_GET['lang'] : '') . 
 
 include '../inc/header.php';
 ?>
-<link href="/assets/css/app.css?v=1.65" rel="stylesheet">
+<link href="/assets/css/app.css?v=1.65<?=time()?>" rel="stylesheet">
 <style>
 
     .canvas-box {
@@ -109,7 +109,7 @@ include '../inc/products.php';
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
-<script src="/assets/js/all.js?v=1.27"></script>
+<script src="/assets/js/all.js?v=1.27<?=time()?>"></script>
 <script src="//mozilla.github.io/pdf.js/build/pdf.js"></script>
 
 <script>
@@ -140,7 +140,6 @@ $("#drop-area").dmUploader({
         updateError(id, 0);
     },
     onInit: function() {
-        console.log('Callback: Plugin initialized');
     },
 });
 

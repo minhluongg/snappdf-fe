@@ -14,7 +14,7 @@ $isCanonical = $isHomeUrl . (isset($_GET['lang']) ? '/' . $_GET['lang'] : '') . 
 
 include '../inc/header.php';
 ?>
-<link href="/assets/css/app.css?v=1.65" rel="stylesheet">
+<link href="/assets/css/app.css?v=1.65<?=time()?>" rel="stylesheet">
 <style>
     .pdf-items {
         grid-template-columns: 1fr 24px 1fr 24px;
@@ -147,9 +147,13 @@ include '../inc/products.php';
                             <div class="preview-file">
                                 <div class="file-info">
                                     <div id="download-icon"></div>
-                                    <div class="pdf-filename" id="downloadFilename"></div>
-                                    <div class="pdf-file-size" id="dlFileSize"></div></div>
+                                    <div class="download-info">
+                                        <div class="pdf-filename" id="downloadFilename"></div>
+                                        <div class="pdf-file-size" id="dlFileSize"></div>
+                                    </div>
+                                    
                                 </div>
+                            </div>
                         </div>
                         <div class="mt-4 justify-center">
                             <a type="button" class="btn btn-primary btn-convert" href="#" id="download-btn"><?=$lang['download']?><svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19.5 9H15.5V3H9.5V9H5.5L12.5 16L19.5 9ZM5.5 18V20H19.5V18H5.5Z" fill="white"/></svg></a>
@@ -247,7 +251,7 @@ include '../inc/products.php';
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="/assets/js/all.js?v=1.27"></script>
+<script src="/assets/js/all.js?v=1.27<?=time()?>"></script>
 <script src="//mozilla.github.io/pdf.js/build/pdf.js"></script>
 <script>
 var pdfjsLib = window['pdfjs-dist/build/pdf'];
@@ -272,11 +276,9 @@ $("#drop-area").dmUploader({
         showPreview(id, file);
     },
     onUploadProgress: function(id, percent) {
-        // Updating file progress
         uiUpdatePdfProgress(id, percent);
     },
     onUploadSuccess: function(id, data) {
-        // A file was successfully uploaded
         updateFileStatus(id, data);
         uiUpdatePdfProgress(id, 100, 'progress-success', false);
     },
@@ -286,7 +288,6 @@ $("#drop-area").dmUploader({
         updateError(id, 0);
     },
     onInit: function() {
-        console.log('Callback: Plugin initialized');
     },
 });
 

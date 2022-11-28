@@ -73,13 +73,12 @@ function uiShowPreview(id, file, fileType) {
         $('#handle-upload').addClass('active');
         $('body').addClass('d-scroll');
     } else {
-        alert('Unsupported format');
+        alert(lang.errorUnSpFormat);
     }
 }
 
 // UI 
 function uiUpdatePdfProgress(id, percent, addclasss, active) {
-    console.log('id: ' + id + ' - ' + percent);
     color = (typeof color === 'undefined' ? false : color);
     active = (typeof active === 'undefined' ? true : active);
 
@@ -122,7 +121,7 @@ function getTaskId(datasend, timdeDelay = '') {
             getTaskResult(obj.task_id);
 		},
 		error: function() {
-			showAlertError("Can't connect to api, please try again");
+			showAlertError(lang.errorConnectApi);
 		}
 
 	});
@@ -145,11 +144,15 @@ function getTaskResult (id, timdeDelay = '') {
                 var dataResult = obj.task_result.data;
                 showResult(obj.task_result.data);
             } else {
-                showAlertError(obj.task_result.error);
+                if (obj.task_result.error_code === 400100) {
+                    showAlertError(lang.error400100);
+                } else if (obj.task_result.error_code === 404100) {
+                    showAlertError(lang.error404100);
+                }
             }
 		},
 		error: function() {
-			showAlertError("Can't connect to api, please try again");
+			showAlertError(lang.errorConnectApi);
 		}
 
 	});
@@ -162,7 +165,7 @@ function showAlertError(content) {
     $('#task-process').removeClass('active');
     $('.converter-footer').removeClass('disabled');
     
-    $('#toast-content').html('<b>Error: </b>' + content);
+    $('#toast-content').html(content);
     const toastLive = document.getElementById('liveToast');
     const toast = new bootstrap.Toast(toastLive);
     toast.show();

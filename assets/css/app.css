@@ -13,6 +13,12 @@ header.sticky {
   color: #1D1C21;
 }
 
+.preview-download .download-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .app-how {
   padding-top: 72px;
   background-color: #fff;
@@ -474,5 +480,33 @@ body.d-scroll {
   .product-category {
     flex: 0 0 auto;
     width: 20%;
+  }
+}
+@media (max-width: 992px) {
+  .download-wrapper .preview-file {
+    width: 100%;
+    padding: 8px;
+    height: auto;
+  }
+  .download-wrapper .file-info {
+    padding-top: 0;
+    flex-direction: row;
+  }
+  .download-wrapper .file-info .pdf-filename, .download-wrapper .file-info .pdf-file-size {
+    text-align: left !important;
+    overflow: hidden;
+  }
+  .download-wrapper .preview-icon {
+    width: 48px;
+    height: 48px;
+    background-size: 48px;
+  }
+  .download-wrapper .download-info {
+    gap: 4px;
+    overflow: hidden;
+    width: 100%;
+  }
+  .download-wrapper .btn.btn-convert {
+    padding: 14px;
   }
 }/*# sourceMappingURL=app.css.map */

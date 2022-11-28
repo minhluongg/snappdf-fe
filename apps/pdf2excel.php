@@ -14,7 +14,7 @@ $isCanonical = $isHomeUrl . (isset($_GET['lang']) ? '/' . $_GET['lang'] : '') . 
 
 include '../inc/header.php';
 ?>
-<link href="/assets/css/app.css?v=1.65" rel="stylesheet">
+<link href="/assets/css/app.css?v=1.65<?=time()?>" rel="stylesheet">
 
 <div class="main-cover">
     <div class="container mt-3">
@@ -86,8 +86,11 @@ include '../inc/products.php';
                             <div class="preview-file">
                                 <div class="file-info">
                                     <div id="download-icon"></div>
-                                    <div class="pdf-filename" id="downloadFilename"></div>
-                                    <div class="pdf-file-size" id="dlFileSize"></div>
+                                    <div class="download-info">
+                                        <div class="pdf-filename" id="downloadFilename"></div>
+                                        <div class="pdf-file-size" id="dlFileSize"></div>
+                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -111,9 +114,8 @@ include '../inc/products.php';
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="/assets/js/all.js?v=1.27"></script>
+<script src="/assets/js/all.js?v=1.27<?=time()?>"></script>
 <script>
-function formatBytes(a,b=2){if(!+a)return"0 Bytes";const c=0>b?0:b,d=Math.floor(Math.log(a)/Math.log(1024));return`${parseFloat((a/Math.pow(1024,d)).toFixed(c))} ${["Bytes","KB","MB","GB","TB","PB","EB","ZB","YB"][d]}`}
 var pdfs = [];
 
 $("#drop-area").dmUploader({
@@ -136,7 +138,6 @@ $("#drop-area").dmUploader({
         updateError(id, 0);
     },
     onInit: function() {
-        console.log('Callback: Plugin initialized');
     },
 });
 

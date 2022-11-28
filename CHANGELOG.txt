@@ -1,0 +1,32 @@
+05/10: v1.0.0 product launch, features:
+ ⁃ Merge PDF
+ ⁃ Split PDF
+ ⁃ PDF to word
+ ⁃ Word to PDF
+
+18/10: v1.0.1 support 13 languages
+
+25/10: v1.0.2 added 9 new features
+ ⁃ PDF to JPG
+ ⁃ JPG to PDF
+ ⁃ Add page number
+ ⁃ Rotate PDF
+ ⁃ Compress PDF
+ ⁃ Add page numbers
+ ⁃ Delete pdf pages
+ ⁃ Protect PDF
+ ⁃ Unlock PDF
+
+14/11:  v1.0.3 added 4 new features
+ ⁃ PDF to excel
+ ⁃ Excel to PDF
+ ⁃ PDF to powerpoint
+ ⁃ Powerpoint to PDF
+
+19/11: v1.0.3 supports 10 new languages
+
+20/11 Fix some bugs
+
+28/11: 
+- thu gon giao dien download tren mobile
+- Chuyen ngon ngu all.js sang js
