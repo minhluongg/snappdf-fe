@@ -14,7 +14,7 @@ $isCanonical = $isHomeUrl . (isset($_GET['lang']) ? '/' . $_GET['lang'] : '') . 
 
 include '../inc/header.php';
 ?>
-<link href="/assets/css/app.css?v=1.65<?=time()?>" rel="stylesheet">
+<link href="/assets/css/app.css?v=1.66<?=time()?>" rel="stylesheet">
 <div class="main-cover">
     <div class="container">
         <div class="upload" id="upload">
@@ -137,7 +137,7 @@ include '../inc/products.php';
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
-<script src="/assets/js/all.js?v=1.27<?=time()?>"></script>
+<script src="/assets/js/all.js?v=1.28<?=time()?>"></script>
 <script>
 Sortable.create(pdfItems, { /* options */ });
 var pdfs = [];

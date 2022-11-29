@@ -15,7 +15,7 @@ $isCanonical = $isHomeUrl . (isset($_GET['lang']) ? '/' . $_GET['lang'] : '') . 
 include '../inc/header.php';
 ?>
 
-<link href="/assets/css/app.css?v=1.65<?=time()?>" rel="stylesheet">
+<link href="/assets/css/app.css?v=1.66<?=time()?>" rel="stylesheet">
 <div class="main-cover">
     <div class="container">
         <div class="upload" id="upload">
@@ -69,7 +69,7 @@ include '../inc/products.php';
                     </div>
                     <div class="radio mt-2">
                         <div class="radio-item">
-                            <input class="hide-input" type="radio" name="density" value="72" id="density72" checked="checked" />
+                            <input class="hide-input" type="radio" name="density" value="72" id="density72"/>
                             <label for="density72">
                                 <div class="label-info">
                                     <div class="label-title"><?=$merge['webQuality']?></div>
@@ -90,7 +90,7 @@ include '../inc/products.php';
                             </label>
                         </div>
                         <div class="radio-item">
-                            <input class="hide-input" type="radio" name="density" value="240" id="density240" />
+                            <input class="hide-input" type="radio" name="density" value="240" id="density240" checked="checked" />
                             <label for="density240">
                                 <div class="label-info">
                                     <div class="label-title"><?=$merge['printQuality']?></div>
@@ -117,7 +117,7 @@ include '../inc/products.php';
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
-<script src="/assets/js/all.js?v=1.27<?=time()?>"></script>
+<script src="/assets/js/all.js?v=1.28<?=time()?>"></script>
 <script>
 Sortable.create(pdfItems, { /* options */ });
 var pdfs = [];

@@ -15,7 +15,7 @@ $isCanonical = $isHomeUrl . (isset($_GET['lang']) ? '/' . $_GET['lang'] : '') . 
 include '../inc/header.php';
 ?>
 
-<link href="/assets/css/app.css?v=1.65<?=time()?>" rel="stylesheet">
+<link href="/assets/css/app.css?v=1.66<?=time()?>" rel="stylesheet">
 <div class="main-cover">
     <div class="container mt-3">
         <div class="upload" id="upload">
@@ -162,7 +162,7 @@ include '../inc/products.php';
                             </div>
                         </div>
                         <div class="mt-4 justify-center">
-                            <a type="button" class="btn btn-primary btn-convert" href="#" id="download-btn"><?=$lang['download']?><svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19.5 9H15.5V3H9.5V9H5.5L12.5 16L19.5 9ZM5.5 18V20H19.5V18H5.5Z" fill="white"/></svg></a>
+                            <a type="button" class="btn btn-primary btn-convert" href="#" id="download-btn"><svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19.5 9H15.5V3H9.5V9H5.5L12.5 16L19.5 9ZM5.5 18V20H19.5V18H5.5Z" fill="white"/></svg><?=$lang['download']?></a>
                         </div>
                         
                     </div>
@@ -249,7 +249,7 @@ include '../inc/products.php';
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
-<script src="/assets/js/all.js?v=1.27<?=time()?>"></script>
+<script src="/assets/js/all.js?v=1.28<?=time()?>"></script>
 <script>
 Sortable.create(pdfItems, {
     handle: '.btn-drag',
